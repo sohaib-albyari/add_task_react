@@ -36,8 +36,9 @@
     background: url(https://i.imgur.com/BKyjjFa.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    -o-background-size: contain;
+    background-size: contain;
+    background-position: bottom;
 }
 
 .LoginPageInnerContainer .LoginFormContainer .LogoContainer .logo {
