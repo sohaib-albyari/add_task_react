@@ -14,6 +14,7 @@ function SingIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [employee, setEmployee] = useState("sohaib");
 
   useEffect(() => {
     fetch("http://localhost:8000/user")
@@ -26,11 +27,10 @@ function SingIn() {
   const handelSubmit = (e) => {
     e.preventDefault();
     let con = 0;
-    let employee = "";
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && users[i].password === password) {
         con++;
-        employee = users[i].username;
+        setEmployee(users[i].username);
       }
     }
     if (con === 0) {
@@ -40,8 +40,7 @@ function SingIn() {
         text: "Invalid Email or Password!",
       });
     } else {
-      // navigate('/Home', { state: { user: employee } })
-      navigate("/task", { state: { user: employee } });
+      navigate("/task", { state: { uname: employee } });
     }
   };
   return (
@@ -63,7 +62,7 @@ function SingIn() {
 
               <form onSubmit={handelSubmit}>
                 <div className="inputContainer">
-                  <label className="label" Forhtml="emailAddress">
+                  <label className="label" forhtml="emailAddress">
                     <img src={emailicon} className="labelIcon" alt="" />
                     <span>Email Address*</span>
                   </label>
@@ -79,7 +78,7 @@ function SingIn() {
                   />
                 </div>
                 <div className="inputContainer">
-                  <label className="label" Forhtml="emailAddress">
+                  <label className="label" forhtml="emailAddress">
                     <img src={passwordicon} className="labelIcon" alt="" />
                     <span>Password*</span>
                   </label>
@@ -101,7 +100,7 @@ function SingIn() {
                       id="RememberMe"
                       className="checkbox"
                     />
-                    <label Forhtml="RememberMe">Remember me</label>
+                    <label forhtml="RememberMe">Remember me</label>
                   </div>
                   <Link to={"/"} className="ForgotPasswordLink">
                     <FontAwesomeIcon icon={faRightToBracket} fade size="lg" />{" "}

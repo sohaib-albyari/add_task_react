@@ -60,8 +60,7 @@ function Registration() {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    // navigate('/Home', { state: { user: username } })
-                    navigate('/task', { state: { user: username } })
+                    navigate('/task', { state: { uname: username } })
                 })
         }
 
@@ -84,20 +83,20 @@ function Registration() {
 
                             <form onSubmit={handelSubmit}>
                                 <div className="inputContainer">
-                                    <label className="label" for="emailAddress">
+                                    <label className="label" forhtml="emailAddress">
                                         <img src={usericon} className="labelIcon" alt=''/>
                                         <span>User Name*</span>
                                     </label>
                                     <input type="text" className="input" id="emailAddress" placeholder="Enter your User Name" onChange={(e) => { setUserName(e.target.value) }} required />
                                 </div>
                                 <div className="inputContainer">
-                                    <label className="label" for="emailAddress">
+                                    <label className="label" forhtml="emailAddress">
                                         <img src={emailicon} className="labelIcon" alt=''/><span>Email
                                             Address*</span></label>
                                     <input type="email" className="input" id="emailAddress" placeholder="Enter your Email Address" onChange={(e) => { setEmail(e.target.value) }} required />
                                 </div>
                                 <div className="inputContainer">
-                                    <label className="label" for="emailAddress">
+                                    <label className="label" forhtml="emailAddress">
                                         <img src={passwordicon} className="labelIcon" alt=''/>
                                         <span>Password*</span>
                                     </label>
@@ -106,7 +105,7 @@ function Registration() {
                                 <div className="OptionsContainer">
                                     <div className="checkboxContainer">
                                         <input type="checkbox" id="RememberMe" className="checkbox" />
-                                        <label for="RememberMe">Remember
+                                        <label forhtml="RememberMe">Remember
                                             me</label>
                                     </div>
                                     <Link to={"/singin"} className="ForgotPasswordLink"><FontAwesomeIcon icon={faRightToBracket} fade size="lg" /> I have an account</Link>
