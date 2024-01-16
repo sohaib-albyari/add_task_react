@@ -15,7 +15,7 @@
 
 .LoginPageInnerContainer .ImageContianer {
     width: 25%;
-    background-color: #e1dfec;
+    background-color: #81ccdc82;
     min-height: 100%;
     padding: 5%;
     display: flex;
@@ -30,7 +30,6 @@
 
 .LoginPageInnerContainer .LoginFormContainer {
     flex-grow: 2;
-    background-color: white;
     min-height: 100%;
     padding: 5%;
     background: url(https://i.imgur.com/BKyjjFa.png) no-repeat center center fixed;
@@ -39,6 +38,7 @@
     -o-background-size: contain;
     background-size: contain;
     background-position: bottom;
+    background-color: #75ccdb;
 }
 
 .LoginPageInnerContainer .LoginFormContainer .LogoContainer .logo {
