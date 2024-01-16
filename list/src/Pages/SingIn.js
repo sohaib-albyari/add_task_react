@@ -14,7 +14,7 @@ function SingIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [employee, setEmployee] = useState("sohaib");
+  const [employee, setEmployee] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8000/user")
@@ -23,15 +23,25 @@ function SingIn() {
   }, []);
 
   const navigate = useNavigate();
-
   const handelSubmit = (e) => {
     e.preventDefault();
     let con = 0;
+
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && users[i].password === password) {
         con++;
-        setEmployee(users[i].username);
+        navigate("/task", { state: { username: users[i].username } });
+        // setEmployee(users[i]?.email);
+        // console.log(users[i]?.username);
+        // console.log(employee);
       }
+      //  else {
+      //   Swal.fire({
+      //     icon: "error",
+      //     title: "Oops...",
+      //     text: "Invalid Email or Password!",
+      //   });
+      // }
     }
     if (con === 0) {
       Swal.fire({
@@ -39,9 +49,10 @@ function SingIn() {
         title: "Oops...",
         text: "Invalid Email or Password!",
       });
-    } else {
-      navigate("/task", { state: { uname: employee } });
     }
+    // else {
+    //   navigate("/task", { state: { username: employee } });
+    // }
   };
   return (
     <>

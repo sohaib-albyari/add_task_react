@@ -12,35 +12,19 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 
 function App() {
-  // const [uname, setUname] = useState(" ");
-  // const loc = useLocation();
+  // const [uname, setUname] = useState("");
+  const loc = useLocation();
+  // // console.log(loc.state?.uname);
   // useEffect(() => {
-  //   setUname(loc.state.uname);
-  // }, [uname]);
+  //   setUname(loc.state?.username);
+  // }, []);
 
   // console.log(uname);
 
   return (
     <>
       <div className="App">
-        {/* <nav
-          style={{ display: uname !== "" ? "block" : "none" }}
-          className="navbar"
-        >
-          <div className="container">
-            <div className="row">
-              <div className="col-2">
-                <Link to={"/task"} className="navbar-brand">
-                  <img className="float-start w-50" src={logo} alt="logo" />
-                </Link>
-              </div>
-              <div className="col-6">
-                <h1 className="float-end">Welcome {uname}</h1>
-              </div>
-            </div>
-          </div>
-        </nav> */}
-        {/* <Nav u={uname} /> */}
+        <Nav name={loc.state?.username} />
         <Routes>
           <Route path="/" element={<Registration />} />
           <Route path="/singin" element={<SingIn />} />
