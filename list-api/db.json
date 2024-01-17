@@ -128,6 +128,12 @@
       "username": "mohammed",
       "email": "mohammed@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "699c",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "123"
     }
   ]
 }
