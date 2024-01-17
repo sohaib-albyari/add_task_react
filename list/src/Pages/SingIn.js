@@ -25,6 +25,7 @@ function SingIn() {
   }, []);
 
   const navigate = useNavigate();
+
   const handelSubmit = (e) => {
     e.preventDefault();
     let con = 0;
@@ -32,7 +33,7 @@ function SingIn() {
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && users[i].password === password) {
         con++;
-        navigate("/task", { state: { username: users[i].username } });
+        navigate("/task", { state: { username: users[i]?.username } });
       }
     }
     if (con === 0) {
