@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import "../cssPage/singin.css";
 import logo from "../image/logo.png";
-import emailicon from "../image/email.png";
-import passwordicon from "../image/pass.png";
 import side from "../image/side.png";
 
 function SingIn() {
@@ -14,7 +16,7 @@ function SingIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [employee, setEmployee] = useState("");
+  // const [employee, setEmployee] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8000/user")
@@ -31,17 +33,7 @@ function SingIn() {
       if (users[i].email === email && users[i].password === password) {
         con++;
         navigate("/task", { state: { username: users[i].username } });
-        // setEmployee(users[i]?.email);
-        // console.log(users[i]?.username);
-        // console.log(employee);
       }
-      //  else {
-      //   Swal.fire({
-      //     icon: "error",
-      //     title: "Oops...",
-      //     text: "Invalid Email or Password!",
-      //   });
-      // }
     }
     if (con === 0) {
       Swal.fire({
@@ -50,9 +42,6 @@ function SingIn() {
         text: "Invalid Email or Password!",
       });
     }
-    // else {
-    //   navigate("/task", { state: { username: employee } });
-    // }
   };
   return (
     <>
@@ -74,8 +63,12 @@ function SingIn() {
               <form onSubmit={handelSubmit}>
                 <div className="inputContainer">
                   <label className="label" forhtml="emailAddress">
-                    <img src={emailicon} className="labelIcon" alt="" />
-                    <span>Email Address*</span>
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      size="xl"
+                      style={{ color: "#3f3f459e" }}
+                    />
+                    <span>&nbsp; Email Address*</span>
                   </label>
                   <input
                     type="email"
@@ -89,9 +82,13 @@ function SingIn() {
                   />
                 </div>
                 <div className="inputContainer">
-                  <label className="label" forhtml="emailAddress">
-                    <img src={passwordicon} className="labelIcon" alt="" />
-                    <span>Password*</span>
+                  <label className="label" forhtml="password">
+                    <FontAwesomeIcon
+                      icon={faLock}
+                      size="xl"
+                      style={{ color: "#3f3f459e" }}
+                    />
+                    <span>&nbsp; Password*</span>
                   </label>
                   <input
                     type="password"

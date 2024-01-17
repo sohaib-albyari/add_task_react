@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from "../image/logo.png";
 import "../App.css";
+
 function Nav(props) {
   console.log(props.name);
+
   return (
     <>
       <nav
         style={{ display: props.name === undefined ? "none" : "flex" }}
         className="navbar"
-        id="h"
       >
         <div className="container-fluid">
           <div className="row">
