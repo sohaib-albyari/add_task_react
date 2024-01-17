@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
-import "../cssPage/add.css";
 
 function AddTask() {
   const [sections, setSections] = useState("");

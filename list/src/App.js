@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     setUname(loc.state?.username);
     console.log(uname);
-  }, [uname, loc.state?.username]);
+  }, []);
 
   return (
     <>
@@ -26,8 +26,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Registration />} />
           <Route path="/singin" element={<SingIn />} />
-          <Route path="/task" element={<Outlet />}>
-            <Route path="/task" element={<Task />} />
+          <Route path="/task" name={uname} element={<Outlet />}>
+            <Route path="/task" name={uname} element={<Task />} />
             <Route path="add" element={<AddTask />} />
             <Route path="filter" element={<FilterTask />} />
             <Route path="edit/:taskid" element={<EditTask />} />

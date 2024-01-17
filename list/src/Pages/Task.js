@@ -8,7 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TaskData from "../components/TaskData";
 
-function Task() {
+function Task(props) {
+  console.log(props);
   const [tasks, setTasks] = useState([]);
   const getAllTasks = () => {
     fetch("http://localhost:8000/task")
@@ -70,11 +71,14 @@ function Task() {
         <tbody>
           {tasks &&
             tasks.map((task) => {
-              return (
-                <tr key={task.id}>
-                  <TaskData task={task} />
-                </tr>
-              );
+              console.log(props.name + "  " + task.employee);
+              if (props.name === task.employee) {
+                return (
+                  <tr key={task.id}>
+                    <TaskData task={task} />
+                  </tr>
+                );
+              }
             })}
         </tbody>
       </table>
