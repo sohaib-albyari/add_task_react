@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
   if (action.type === SET_EMAIL) {
     return {
       ...state,
-      email: action.payload.email,
+      userName: action.payload.userName,
     };
   }
 };

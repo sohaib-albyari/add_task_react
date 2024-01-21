@@ -22,14 +22,11 @@ function SingIn() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-
     axios
       .get("http://localhost:8000/user")
       .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
   }, []);
-
-
 
   const navigate = useNavigate();
 
@@ -40,8 +37,8 @@ function SingIn() {
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && users[i].password === password) {
         con++;
+        setEmailName(users[i].username);
         navigate("/task");
-        setEmailName({ email });
       }
     }
     if (con === 0) {

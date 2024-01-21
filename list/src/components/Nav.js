@@ -3,7 +3,7 @@ import logo from "../image/logo.png";
 import "../App.css";
 import { useAppContext } from "../context/appContext";
 function Nav() {
-  const { email } = useAppContext();
+  const { userName } = useAppContext();
 
   return (
     <>
@@ -17,10 +17,10 @@ function Nav() {
             </div>
             <div
               className="welcomeMsg col-10"
-              style={{ display: email === "" ? "none" : "flex" }}
+              style={{ display: userName === "" ? "none" : "flex" }}
             >
               <h1 className="float-end text-white-50 text-center m-auto">
-                Welcome {email}
+                Welcome {userName}
               </h1>
             </div>
           </div>

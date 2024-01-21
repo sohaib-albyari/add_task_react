@@ -6,6 +6,7 @@ const initialState = {
   userName: "",
   isLog: true,
   email: "",
+  password: "",
 };
 
 const Appcontext = React.createContext();
@@ -13,17 +14,12 @@ const Appcontext = React.createContext();
 export const Appprovider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const setEmailName = ({ email }) => {
-    dispatch({ type: SET_EMAIL, payload: { email } });
+  const setEmailName = ( userName ) => {
+    dispatch({ type: SET_EMAIL, payload: { userName } });
   };
 
   return (
-    <Appcontext.Provider
-      value={{
-        ...state,
-        setEmailName,
-      }}
-    >
+    <Appcontext.Provider value={{ ...state, setEmailName }}>
       {children}
     </Appcontext.Provider>
   );
