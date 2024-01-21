@@ -1,10 +1,11 @@
 import React, { useContext, useReducer } from "react";
-import { LOG_IN_START, LOG_IN_SUCSESS, LOG_IN_FIELD } from "./action";
+import { SET_EMAIL } from "./action";
 import { reducer } from "./reducer";
 
 const initialState = {
   userName: "",
-  isLog: false,
+  isLog: true,
+  email: "",
 };
 
 const Appcontext = React.createContext();
@@ -12,8 +13,19 @@ const Appcontext = React.createContext();
 export const Appprovider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const setEmailName = ({ email }) => {
+    dispatch({ type: SET_EMAIL, payload: { email } });
+  };
+
   return (
-    <Appcontext.Provider value={{ ...state }}>{children}</Appcontext.Provider>
+    <Appcontext.Provider
+      value={{
+        ...state,
+        setEmailName,
+      }}
+    >
+      {children}
+    </Appcontext.Provider>
   );
 };
 

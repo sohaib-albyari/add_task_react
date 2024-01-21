@@ -194,7 +194,6 @@ function EditTask() {
                       defaultValue={dep}
                       key={dep.id}
                     >
-                      {" "}
                       {dep}
                     </option>
                   );
@@ -230,7 +229,6 @@ function EditTask() {
                       defaultValue={u.username}
                       key={u.id}
                     >
-                      {" "}
                       {u.username}
                     </option>
                   );

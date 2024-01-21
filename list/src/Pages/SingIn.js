@@ -11,19 +11,25 @@ import "../cssPage/singin.css";
 import logo from "../image/logo.png";
 import side from "../image/side.png";
 import axios from "axios";
+import { useAppContext } from "../context/appContext";
 
 function SingIn() {
+  const { setEmailName } = useAppContext();
+  //
   const [users, setUsers] = useState("");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
+
     axios
       .get("http://localhost:8000/user")
       .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+
 
   const navigate = useNavigate();
 
@@ -34,7 +40,8 @@ function SingIn() {
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && users[i].password === password) {
         con++;
-        navigate("/task", { state: { username: users[i]?.username } });
+        navigate("/task");
+        setEmailName({ email });
       }
     }
     if (con === 0) {
@@ -77,9 +84,7 @@ function SingIn() {
                     className="input"
                     id="emailAddress"
                     placeholder="Enter your Email Address"
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>

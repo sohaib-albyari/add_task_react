@@ -9,16 +9,7 @@ import {
 import TaskData from "../components/TaskData";
 import axios from "axios";
 
-import { useAppContext } from "../context2/appContext";
-
 function Task() {
-  const { userName, isLog } = useAppContext();
-
-  useEffect(() => {
-    console.log(userName);
-    console.log(isLog);
-  }, []);
-
   const [tasks, setTasks] = useState([]);
   const getAllTasks = () => {
     axios

@@ -1,28 +1,26 @@
 import { Link } from "react-router-dom";
 import logo from "../image/logo.png";
 import "../App.css";
-import { useContext } from "react";
-import { ListContext } from "../context/ListContext";
+import { useAppContext } from "../context/appContext";
 function Nav() {
-  const value = useContext(ListContext);
-  // console.log(value);
+  const { email } = useAppContext();
 
   return (
     <>
-      <nav
-        style={{ display: value === undefined ? "none" : "flex" }}
-        className="navbar"
-      >
+      <nav className="navbar">
         <div className="container-fluid">
           <div className="row">
             <div className="col-2">
               <Link to={"/task"} className="navbar-brand">
-                <img className="float-start w-50" src={logo} alt="0" />
+                <img className="float-start w-25" src={logo} alt="0" />
               </Link>
             </div>
-            <div className="welcomeMsg col-10">
+            <div
+              className="welcomeMsg col-10"
+              style={{ display: email === "" ? "none" : "flex" }}
+            >
               <h1 className="float-end text-white-50 text-center m-auto">
-                Welcome {value}
+                Welcome {email}
               </h1>
             </div>
           </div>
