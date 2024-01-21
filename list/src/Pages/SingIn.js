@@ -10,18 +10,19 @@ import Swal from "sweetalert2";
 import "../cssPage/singin.css";
 import logo from "../image/logo.png";
 import side from "../image/side.png";
+import axios from "axios";
 
 function SingIn() {
   const [users, setUsers] = useState("");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [employee, setEmployee] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8000/user")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    axios
+      .get("http://localhost:8000/user")
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   const navigate = useNavigate();

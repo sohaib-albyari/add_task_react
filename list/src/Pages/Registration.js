@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../image/logo.png";
 import side from "../image/side.png";
+import axios from "axios";
 
 function Registration() {
   const [users, setUsers] = useState([]);
@@ -18,11 +19,10 @@ function Registration() {
   const [password, setPassword] = useState("");
 
   const getAllUsers = () => {
-    fetch("http://localhost:8000/user")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      });
+    axios
+      .get("http://localhost:8000/user")
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -48,17 +48,13 @@ function Registration() {
         return con;
       });
     if (con === 0) {
-      fetch("http://localhost:8000/user", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      axios
+        .post("http://localhost:8000/user", {
           username: username,
           email: email,
           password: password,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
+        })
+        .then((res) => {
           Swal.fire({
             icon: "success",
             title: "The user has been saved",

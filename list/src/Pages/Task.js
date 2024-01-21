@@ -7,19 +7,29 @@ import {
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import TaskData from "../components/TaskData";
+import axios from "axios";
 
-function Task(props) {
-  console.log(props);
+import { useAppContext } from "../context2/appContext";
+
+function Task() {
+  const { userName, isLog } = useAppContext();
+
+  useEffect(() => {
+    console.log(userName);
+    console.log(isLog);
+  }, []);
+
   const [tasks, setTasks] = useState([]);
   const getAllTasks = () => {
-    fetch("http://localhost:8000/task")
-      .then((res) => res.json())
-      .then((data) => setTasks(data));
+    axios
+      .get("http://localhost:8000/task")
+      .then((res) => setTasks(res.data))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
     getAllTasks();
-  }, []);
+  }, [tasks]);
 
   return (
     <>
@@ -33,7 +43,7 @@ function Task(props) {
           fade
           size="lg"
           style={{ color: "#ffffff" }}
-        />{" "}
+        />
         Log Out
       </Link>
       <Link to={"/task/add"} className="btn btn-success mt-3">
@@ -42,7 +52,7 @@ function Task(props) {
           fade
           size="lg"
           style={{ color: "#ffffff" }}
-        />{" "}
+        />
         Add New Task
       </Link>
       <Link to={"/task/filter"} className="btn btn-primary mt-3 ms-3">
@@ -51,7 +61,7 @@ function Task(props) {
           fade
           size="lg"
           style={{ color: "#ffffff" }}
-        />{" "}
+        />
         Task Filter
       </Link>
       <table className="table table-striped mt-5">
@@ -71,14 +81,11 @@ function Task(props) {
         <tbody>
           {tasks &&
             tasks.map((task) => {
-              console.log(props.name + "  " + task.employee);
-              if (props.name === task.employee) {
-                return (
-                  <tr key={task.id}>
-                    <TaskData task={task} />
-                  </tr>
-                );
-              }
+              return (
+                <tr key={task.id}>
+                  <TaskData task={task} />
+                </tr>
+              );
             })}
         </tbody>
       </table>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function AddTask() {
   const [sections, setSections] = useState("");
@@ -16,20 +17,17 @@ function AddTask() {
   const [enddateTime, setEndDateTime] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:8000/depatments")
-      .then((res) => res.json())
-      .then((data) => {
-        setSections(data);
-      });
+    axios
+      .get("http://localhost:8000/depatments")
+      .then((res) => setSections(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:8000/user")
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/user")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      });
-  }, []);
 
   const navigate = useNavigate();
 
@@ -40,10 +38,8 @@ function AddTask() {
     }
     e.preventDefault();
 
-    fetch("http://localhost:8000/task", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    axios
+      .post("http://localhost:8000/task", {
         name: name,
         department: department,
         employee: user,
@@ -51,10 +47,9 @@ function AddTask() {
         check: check,
         startdateTime: [startdateTime[0], startdateTime[1]],
         enddateTime: [enddateTime[0], enddateTime[1]],
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {});
+      })
+      .then((res) => {})
+      .catch((err) => console.log(err));
 
     Swal.fire({
       title: `Has Added "${name}" successfully.`,
