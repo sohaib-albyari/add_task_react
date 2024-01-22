@@ -14,7 +14,7 @@ function Nav() {
     if (userName === "") {
       navigate("/singin");
     }
-  }, []);
+  }, [userName, navigate]);
 
   const handelSubmit = () => {
     setUserName("");

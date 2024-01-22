@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-import bootstrapMin from "bootstrap/dist/js/bootstrap.min";
 function Operation(props) {
   const [tasks, setTasks] = useState([]);
 

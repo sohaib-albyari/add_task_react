@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from "react";
-import { LOG_OUT, SET_USER_NAME } from "./action";
+import { SET_USER_NAME } from "./action";
 import { reducer } from "./reducer";
 
 const initialState = {
@@ -19,9 +19,6 @@ export const Appprovider = ({ children }) => {
     console.log(userName);
   };
 
-  // const setUserNameLogOut = (userName) => {
-  //   dispatch({ type: LOG_OUT, payload: { userName } });
-  // };
 
   return (
     <Appcontext.Provider value={{ ...state, setUserName }}>
