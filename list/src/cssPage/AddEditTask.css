@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+.add-page,
+.edit-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url(../image/logo.png);
+  background-color: #380d59;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.add-page section,
+.edit-page section {
+  position: relative;
+  width: 100% !important;
+  max-width: 50rem;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
+  margin: 1rem;
+}
+
+.add-page form,
+.edit-page form {
+  width: 100%;
+}
+
+.add-page h1,
+.edit-page h1 {
+  font-size: 2rem;
+  color: #fff !important;
+  text-align: center;
+}
+
+.inputbox {
+  position: relative;
+  margin: 30px auto;
+  max-width: 70%;
+  border-bottom: 2px solid #fff;
+}
+
+.inputbox label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+}
+
+input:focus~label,
+input:valid~label,
+textarea:valid~label,
+textarea:focus~label {
+  top: -7px;
+}
+
+input[type='datetime-local']~label,
+select~label {
+  top: -4px !important;
+}
+
+
+.inputbox input,
+.inputbox textarea,
+.inputbox select {
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 35px 0 5px;
+  color: #fff !important;
+  position: relative;
+  z-index: 101;
+}
+
+.inputbox input[type="datetime-local"]::-webkit-calendar-picker-indicator{
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.inputbox select,
+.inputbox option {
+  box-shadow: none !important;
+}
+
+.inputbox option {
+  box-shadow: none !important;
+  background-color: #380d59b7;
+}
+
+.icon-container {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  z-index: 100;
+}
+
+
+.checkbtndiv {
+  font-size: 0.85rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 30px auto;
+  max-width: 70%;
+}
+
+.checkbtndiv label {
+  display: flex;
+  align-items: center;
+}
+
+.checkbtndiv label input {
+  margin-right: 3px;
+}
+
+.checkbtndiv a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.checkbtndiv a:hover {
+  text-decoration: underline;
+}
+
+.btn-task,
+.exit {
+  width: 55% !important;
+  height: 40px;
+  border-radius: 40px !important;
+  background-color: rgb(255, 255, 255, 1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  margin-bottom: 10px !important;
+  padding: 0;
+}
+
+.btn-task:hover,
+.btn-task:hover .exit {
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.exit {
+  text-decoration: none;
+  color: #000 !important;
+  display: flex;
+  width: 100% !important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
