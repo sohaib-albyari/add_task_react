@@ -4,5 +4,6 @@ export const LOG_IN_SUCSESS = "LOG_IN_SUCSESS";
 
 export const LOG_IN_FIELD = "LOG_IN_FIELD";
 
-export const SET_EMAIL = "SET_EMAIL";
+export const SET_USER_NAME = "SET_USER_NAME";
 
+export const LOG_OUT = "LOG_OUT";

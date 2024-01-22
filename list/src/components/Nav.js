@@ -1,11 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../image/logo.png";
 import "../App.css";
 import { useAppContext } from "../context/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 function Nav() {
-  const { userName } = useAppContext();
+  const { userName, setUserName } = useAppContext();
+
+  const navigate = useNavigate();
+
+  const handelSubmit = () => {
+    setUserName("");
+    navigate("/singin");
+  };
 
   return (
     <>
@@ -30,7 +37,8 @@ function Nav() {
             </div>
             <div className="col-2">
               <Link
-                to={"/singin"}
+                // to={"/singin"}
+                onClick={handelSubmit}
                 className="float-start btn btn-warning text-light m-2"
               >
                 <FontAwesomeIcon

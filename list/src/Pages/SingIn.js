@@ -14,7 +14,7 @@ import axios from "axios";
 import { useAppContext } from "../context/appContext";
 
 function SingIn() {
-  const { setEmailName } = useAppContext();
+  const { setUserName } = useAppContext();
   //
   const [users, setUsers] = useState("");
 
@@ -37,7 +37,7 @@ function SingIn() {
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && users[i].password === password) {
         con++;
-        setEmailName(users[i].username);
+        setUserName(users[i].username);
         navigate("/task");
       }
     }
