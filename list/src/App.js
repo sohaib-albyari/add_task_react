@@ -1,11 +1,11 @@
 import {  Route, Routes } from "react-router-dom";
 import "./App.css";
-import AddTask from "./Pages/AddTask";
-import EditTask from "./Pages/EditTask";
-import FilterTask from "./Pages/FilterTask";
+import AddTask from "./AdminPage/AddTask";
+import EditTask from "./AdminPage/EditTask";
+import FilterTask from "./AdminPage/FilterTask";
 import { Outlet } from "react-router-dom";
 import Registration from "./Pages/Registration";
-import Task from "./Pages/Task";
+import Task from "./AdminPage/Task";
 import SingIn from "./Pages/SingIn";
 import Nav from "./components/Nav";
 

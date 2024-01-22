@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
   faArrowDownShortWide,
-  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import TaskData from "../components/TaskData";
 import axios from "axios";
@@ -25,18 +24,7 @@ function Task() {
   return (
     <>
       <h1>Task page</h1>
-      <Link
-        to={"/singin"}
-        className="float-start btn btn-warning text-light m-2"
-      >
-        <FontAwesomeIcon
-          icon={faRightFromBracket}
-          fade
-          size="lg"
-          style={{ color: "#ffffff" }}
-        />
-        Log Out
-      </Link>
+
       <Link to={"/task/add"} className="btn btn-success mt-3">
         <FontAwesomeIcon
           icon={faPlus}

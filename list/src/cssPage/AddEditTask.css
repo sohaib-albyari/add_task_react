@@ -122,7 +122,7 @@ select~label {
 
 .checkbtndiv {
   font-size: 0.85rem;
-  color: #fff;
+  color: #fff !important;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -140,7 +140,7 @@ select~label {
 }
 
 .checkbtndiv a {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
   font-weight: 600;
 }
@@ -163,6 +163,7 @@ select~label {
   transition: all 0.4s ease;
   margin-bottom: 10px !important;
   padding: 0;
+  color: #000 !important;
 }
 
 .btn-task:hover,
@@ -172,7 +173,6 @@ select~label {
 
 .exit {
   text-decoration: none;
-  color: #000 !important;
   display: flex;
   width: 100% !important;
   flex-direction: row;

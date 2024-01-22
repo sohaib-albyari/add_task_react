@@ -14,7 +14,7 @@ import "../cssPage/AddEditTask.css";
 function AddTask() {
   const [sections, setSections] = useState("");
   const [users, setUsers] = useState("");
-  const [user, setUser] = useState("");
+  const [employee, setEmployee] = useState("");
   const [name, setName] = useState("");
   const [check, setCheck] = useState("Not Checked");
   const [department, setDepartment] = useState("");
@@ -47,7 +47,7 @@ function AddTask() {
       .post("http://localhost:8000/task", {
         name: name,
         department: department,
-        employee: user,
+        employee: employee,
         description: description,
         check: check,
         startdateTime: [startdateTime[0], startdateTime[1]],
@@ -365,7 +365,7 @@ function AddTask() {
                   className="form-select"
                   id="validationCustom04"
                   onChange={(e) => {
-                    setUser(e.target.value);
+                    setEmployee(e.target.value);
                   }}
                   required
                 >

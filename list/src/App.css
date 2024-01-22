@@ -13,9 +13,12 @@
   align-items: center;
 }
 
+.nav-item {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 th {
   background-image: linear-gradient(to right bottom, #381054, #273e80, #0066a1, #008db8, #3bb3c6);
   color: white !important;
 }
-
-

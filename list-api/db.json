@@ -1,43 +1,15 @@
 {
-  "depatments": [
-    "Developers",
-    "Designers",
-    "Managers",
-    "Hr",
-    "Admins"
-  ],
+  "depatments": ["Developers", "Designers", "Managers", "Hr", "Admins"],
   "task": [
     {
-      "name": "as",
-      "check": "Checked",
-      "department": "Developers",
-      "user": "sohaib",
-      "description": "dasdasdasd",
-      "startdateTime": [
-        "2024-01-18",
-        "16:04"
-      ],
-      "enddateTime": [
-        "2024-01-19",
-        "16:04"
-      ],
-      "id": "dd43"
-    },
-    {
-      "id": "2c2d",
       "name": "asdas",
       "department": "Developers",
-      "employee": "sohaib",
+      "employee": "rami",
       "description": "dasdasdasd",
       "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-21",
-        "10:18"
-      ],
-      "enddateTime": [
-        "2024-01-22",
-        "10:18"
-      ]
+      "startdateTime": ["2024-01-21", "10:18"],
+      "enddateTime": ["2024-01-22", "10:18"],
+      "id": "2c2d"
     },
     {
       "id": "0eb1",
@@ -46,14 +18,8 @@
       "employee": "rami",
       "description": "dasdasd",
       "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-21",
-        "10:18"
-      ],
-      "enddateTime": [
-        "2024-01-22",
-        "10:18"
-      ]
+      "startdateTime": ["2024-01-21", "10:18"],
+      "enddateTime": ["2024-01-22", "10:18"]
     },
     {
       "id": "c6cb",
@@ -62,14 +28,8 @@
       "employee": "jafar",
       "description": "asd",
       "check": "Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "11:22"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:22"
-      ]
+      "startdateTime": ["2024-01-22", "11:22"],
+      "enddateTime": ["2024-01-23", "11:22"]
     },
     {
       "id": "746e",
@@ -78,14 +38,8 @@
       "employee": "jafar",
       "description": "dasdasdasd",
       "check": "Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "11:25"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:25"
-      ]
+      "startdateTime": ["2024-01-22", "11:25"],
+      "enddateTime": ["2024-01-23", "11:25"]
     },
     {
       "id": "47f5",
@@ -94,14 +48,18 @@
       "employee": "rami",
       "description": "asdasdasd",
       "check": "Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "11:48"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:48"
-      ]
+      "startdateTime": ["2024-01-22", "11:48"],
+      "enddateTime": ["2024-01-23", "11:48"]
+    },
+    {
+      "name": "sadasdasda",
+      "department": "Developers",
+      "employee": "admin",
+      "description": "sdasdasdasdasda",
+      "check": "Not Checked",
+      "startdateTime": ["2024-01-22", "14:06"],
+      "enddateTime": ["2024-01-23", "14:06"],
+      "id": "b43e"
     }
   ],
   "user": [

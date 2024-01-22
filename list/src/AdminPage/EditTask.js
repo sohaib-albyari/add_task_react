@@ -5,7 +5,6 @@ import {
   faPenToSquare,
   faCalendarDays,
   faCaretDown,
-  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -19,7 +18,7 @@ function EditTask() {
   const [name, setName] = useState("");
   const [check, setCheck] = useState("Not Checked");
   const [department, setDepartment] = useState("");
-  const [user, setUser] = useState("");
+  const [employee, setEmployee] = useState("");
   const [description, setDescription] = useState("");
   const [startdateTime, setStartDateTime] = useState({});
   const [enddateTime, setEndDateTime] = useState({});
@@ -48,7 +47,7 @@ function EditTask() {
         setName(res.data.name);
         setCheck(res.data.check);
         setDepartment(res.data.department);
-        setUser(res.data.employee);
+        setEmployee(res.data.employee);
         setDescription(res.data.description);
         setStartDateTime(res.data.startdateTime);
         setEndDateTime(res.data.enddateTime);
@@ -62,10 +61,10 @@ function EditTask() {
     axios
       .put(`http://localhost:8000/task/${taskid}`, {
         name,
-        check,
         department,
-        user,
+        employee,
         description,
+        check,
         startdateTime,
         enddateTime,
       })
@@ -392,7 +391,7 @@ function EditTask() {
                   className="form-select"
                   id="validationCustom04"
                   onChange={(e) => {
-                    setUser(e.target.value);
+                    setEmployee(e.target.value);
                   }}
                   required
                 >
@@ -400,15 +399,14 @@ function EditTask() {
                     --
                   </option>
                   {users &&
-                    users.map((u) => {
+                    users.map((isuser) => {
                       return (
                         <option
-                          selected={u.username === user ? true : false}
-                          key={u.id}
-                          value={u.name}
+                          selected={isuser.username === employee ? true : false}
+                          key={isuser.id}
+                          value={isuser.name}
                         >
-                          {" "}
-                          {u.username}
+                          {isuser.username}
                         </option>
                       );
                     })}
