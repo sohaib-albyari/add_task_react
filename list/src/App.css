@@ -1,3 +1,8 @@
+* {
+  margin: 0px;
+  font-family: Rubik;
+}
+
 .App {
   text-align: center;
 }
@@ -18,7 +23,59 @@
   justify-content: space-between;
 }
 
-th {
-  background-image: linear-gradient(to right bottom, #381054, #273e80, #0066a1, #008db8, #3bb3c6);
-  color: white !important;
+/* .col-12{
+  height: 80vh !important;
+} */
+
+.intro,
+.bg-image {
+  /* height: 100vh;
+  color: #fff;
+  background-image: url(https://mdbootstrap.com/img/Photos/new-templates/glassmorphism-article/img7.jpg);
+ */
+  /* height: 100vh; */
+  max-height: 100vh;
+  color: #fff;
+  background-image: url(../src/image/logo.png);
+  background-color: #380d59;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  overflow: auto;
+}
+
+.task-btn {
+  width: fit-content !important;
+  height: 40px;
+  border-radius: 40px !important;
+  background-color: rgb(255, 255, 255, 1) !important;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  margin-bottom: 10px !important;
+  padding: 0;
+  color: #000 !important;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* overflow: hidden; */
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+
+.mask-custom {
+  margin: 1% 0;
+  background-color: transparent !important;
+  border-radius: 2em !important;
+  backdrop-filter: blur(40px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.05) !important;
+  background-clip: padding-box !important;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03) !important;
 }

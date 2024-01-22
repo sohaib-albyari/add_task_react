@@ -4,14 +4,20 @@ import "../App.css";
 import { useAppContext } from "../context/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 function Nav() {
   const { userName, setUserName } = useAppContext();
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (userName === "") {
+      navigate("/singin");
+    }
+  }, []);
+
   const handelSubmit = () => {
     setUserName("");
-    navigate("/singin");
   };
 
   return (
@@ -37,7 +43,7 @@ function Nav() {
             </div>
             <div className="col-2">
               <Link
-                // to={"/singin"}
+                to={"/singin"}
                 onClick={handelSubmit}
                 className="float-start btn btn-warning text-light m-2"
               >

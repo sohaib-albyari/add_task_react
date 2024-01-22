@@ -16,6 +16,7 @@ export const Appprovider = ({ children }) => {
 
   const setUserName = (userName) => {
     dispatch({ type: SET_USER_NAME, payload: { userName } });
+    console.log(userName);
   };
 
   // const setUserNameLogOut = (userName) => {

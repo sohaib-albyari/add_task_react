@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import bootstrapMin from "bootstrap/dist/js/bootstrap.min";
 function Operation(props) {
   const [tasks, setTasks] = useState([]);
 
@@ -42,6 +43,7 @@ function Operation(props) {
   return (
     <td>
       <button
+        type="button"
         className="btn btn-danger btn-sm ms-2"
         onClick={() => {
           deleteTask(props);
@@ -49,13 +51,14 @@ function Operation(props) {
           navigate("/task");
         }}
       >
-        <FontAwesomeIcon icon={faTrash} beat size="lg" /> Delete
+        <FontAwesomeIcon icon={faTrash} beat size="lg" />
       </button>
+
       <Link
         to={`/task/edit/${props.task.id}`}
         className="btn btn-primary btn-sm ms-2"
       >
-        <FontAwesomeIcon icon={faPenToSquare} beat size="lg" /> Edit
+        <FontAwesomeIcon icon={faPenToSquare} beat size="lg" />
       </Link>
     </td>
   );
