@@ -4,9 +4,6 @@ import { reducer } from "./reducer";
 
 const initialState = {
   userName: "",
-  isLog: true,
-  email: "",
-  password: "",
 };
 
 const Appcontext = React.createContext();
@@ -16,7 +13,6 @@ export const Appprovider = ({ children }) => {
 
   const setUserName = (userName) => {
     dispatch({ type: SET_USER_NAME, payload: { userName } });
-    console.log(userName);
   };
 
 

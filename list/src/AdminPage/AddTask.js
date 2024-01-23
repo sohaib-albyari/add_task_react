@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import axios from "axios";
-import "../cssPage/AddEditTask.css";
+import "../cssPage/AddEditFilterTask.css";
 
 function AddTask() {
   const [sections, setSections] = useState("");

@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+
 function Operation(props) {
   const [tasks, setTasks] = useState([]);
 
@@ -41,24 +45,29 @@ function Operation(props) {
 
   return (
     <td>
-      <button
-        type="button"
-        className="btn btn-danger btn-sm ms-2"
-        onClick={() => {
-          deleteTask(props);
-          getAllTasks(tasks);
-          navigate("/task");
-        }}
-      >
-        <FontAwesomeIcon icon={faTrash} beat size="lg" />
-      </button>
+      <OverlayTrigger overlay={<Tooltip id="t-1">Delete</Tooltip>}>
+        <button
+          id="delete"
+          type="button"
+          className="btn btn-danger btn-sm ms-2"
+          onClick={() => {
+            deleteTask(props);
+            getAllTasks(tasks);
+            navigate("/task");
+          }}
+        >
+          <FontAwesomeIcon icon={faTrash} beat size="lg" />
+        </button>
+      </OverlayTrigger>
 
-      <Link
-        to={`/task/edit/${props.task.id}`}
-        className="btn btn-primary btn-sm ms-2"
-      >
-        <FontAwesomeIcon icon={faPenToSquare} beat size="lg" />
-      </Link>
+      <OverlayTrigger overlay={<Tooltip id="t-2">Edit</Tooltip>}>
+        <Link
+          to={`/task/edit/${props.task.id}`}
+          className="btn btn-primary btn-sm ms-2"
+        >
+          <FontAwesomeIcon icon={faPenToSquare} beat size="lg" />
+        </Link>
+      </OverlayTrigger>
     </td>
   );
 }

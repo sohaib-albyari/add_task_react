@@ -7,11 +7,11 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url(../image/logo.png);
-  background-color: #380d59;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  /* background-image: url(../image/logo.png); */
+  /* background-color: #380d59; */
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: contain; */
   width: 100% !important;
   max-width: 100%;
 }

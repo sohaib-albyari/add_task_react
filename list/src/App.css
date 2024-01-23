@@ -23,17 +23,10 @@
   justify-content: space-between;
 }
 
-/* .col-12{
-  height: 80vh !important;
-} */
 
-.intro,
+
+/* .intro,
 .bg-image {
-  /* height: 100vh;
-  color: #fff;
-  background-image: url(https://mdbootstrap.com/img/Photos/new-templates/glassmorphism-article/img7.jpg);
- */
-  /* height: 100vh; */
   max-height: 100vh;
   color: #fff;
   background-image: url(../src/image/logo.png);
@@ -42,7 +35,7 @@
   background-position: center;
   background-size: contain;
   overflow: auto;
-}
+} */
 
 .task-btn {
   width: fit-content !important;
@@ -64,7 +57,6 @@ table td,
 table th {
   text-overflow: ellipsis;
   white-space: nowrap;
-  /* overflow: hidden; */
   background-color: transparent !important;
   color: #fff !important;
 }
