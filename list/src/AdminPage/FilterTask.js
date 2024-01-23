@@ -158,7 +158,7 @@ function FilterTask() {
             <div className="row justify-content-center">
               <div className="col-12">
                 <div className="card mask-custom">
-                  <div className="filter-option">
+                  <div className="filter-option d-flex">
                     <div className="inputbox w-25">
                       <select
                         className="form-select"

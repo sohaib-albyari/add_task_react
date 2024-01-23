@@ -14,7 +14,7 @@ import axios from "axios";
 import { useAppContext } from "../context/appContext";
 
 function SingIn() {
-  const { setUserName } = useAppContext();
+  const { userName, setUserName } = useAppContext();
   //
   const [users, setUsers] = useState("");
 
@@ -38,7 +38,11 @@ function SingIn() {
       if (users[i].email === email && users[i].password === password) {
         con++;
         setUserName(users[i].username);
-        navigate("/task");
+        if (users[i].username === "admin") {
+          navigate("/task");
+        } else {
+          navigate("/task/user");
+        }
       }
     }
     if (con === 0) {
@@ -49,6 +53,7 @@ function SingIn() {
       });
     }
   };
+
   return (
     <>
       <div className="LoginPageContainer">

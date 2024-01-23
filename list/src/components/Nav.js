@@ -5,6 +5,7 @@ import { useAppContext } from "../context/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
+
 function Nav() {
   const { userName, setUserName } = useAppContext();
 
@@ -14,7 +15,7 @@ function Nav() {
     if (userName === "") {
       navigate("/singin");
     }
-  }, [userName, navigate]);
+  }, [userName]);
 
   const handelSubmit = () => {
     setUserName("");
