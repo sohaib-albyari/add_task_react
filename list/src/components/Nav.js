@@ -34,10 +34,7 @@ function Nav() {
                 <img className="float-start w-25" src={logo} alt="0" />
               </Link>
             </div>
-            <div
-              className="welcomeMsg col-3"
-              // style={{ display: userName === "" ? "none" : "flex" }}
-            >
+            <div className="welcomeMsg col-3">
               <h1 className="float-end text-white-50 text-center m-auto">
                 Welcome {userName}
               </h1>

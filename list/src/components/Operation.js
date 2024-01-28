@@ -8,34 +8,41 @@ import axios from "axios";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-function Operation(props) {
-  const [tasks, setTasks] = useState([]);
+function Operation({setTasks,task,tasks}) {
+  // const [tasks, setTasks] = useState([]);
+
+  const [dlTasks, setDlTasks] = useState("");
+
+  // useEffect(() => {
+  //   getAllTasks();
+  // }, []);
+
+  // const getAllTasks = () => {
+  //   axios
+  //     .get("http://localhost:8000/task")
+  //     .then((res) => setTasks(res.data))
+  //     .catch((err) => console.log(err));
+  // };
 
   useEffect(() => {
-    getAllTasks();
-  }, [tasks]);
-
-  const getAllTasks = () => {
-    axios
-      .get("http://localhost:8000/task")
-      .then((res) => setTasks(res.data))
-      .catch((err) => console.log(err));
-  };
+    setTasks(tasks.filter((t) => t.id !== dlTasks));
+  }, [dlTasks, tasks,setTasks]);
 
   const navigate = useNavigate();
 
-  const deleteTask = (props) => {
+  const deleteTask = (id) => {
     Swal.fire({
-      title: `Are you sure to delete task "${props.task.name}"?`,
+      title: `Are you sure to delete task "${task.name}"?`,
       showCancelButton: true,
       icon: "question",
       confirmButtonText: "Delete",
     }).then((data) => {
       if (data.isConfirmed) {
         axios
-          .delete(`http://localhost:8000/task/${props.task.id}`)
+          .delete(`http://localhost:8000/task/${task.id}`)
           .then((res) => {
-            setTasks((prev) => prev.filter((t) => t.id !== props.task.id));
+            setDlTasks(id);
+            // setTasks((prev) => prev.filter((t) => t.id !== task.id));
             navigate("/task");
           })
           .catch((err) => console.log(err));
@@ -51,8 +58,8 @@ function Operation(props) {
           type="button"
           className="btn btn-danger btn-sm ms-2"
           onClick={() => {
-            deleteTask(props);
-            getAllTasks(tasks);
+            deleteTask(task.id);
+            // getAllTasks(tasks);
             navigate("/task");
           }}
         >
@@ -62,7 +69,7 @@ function Operation(props) {
 
       <OverlayTrigger overlay={<Tooltip id="t-2">Edit</Tooltip>}>
         <Link
-          to={`/task/edit/${props.task.id}`}
+          to={`/task/edit/${task.id}`}
           className="btn btn-primary btn-sm ms-2"
         >
           <FontAwesomeIcon icon={faPenToSquare} beat size="lg" />

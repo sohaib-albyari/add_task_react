@@ -41,10 +41,12 @@ function SingIn() {
         if (users[i].username === "admin") {
           navigate("/task");
         } else {
-          navigate("/task/user");
+          navigate("/user");
         }
+        break;
       }
     }
+
     if (con === 0) {
       Swal.fire({
         icon: "error",
