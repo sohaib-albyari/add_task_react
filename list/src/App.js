@@ -28,7 +28,7 @@ function App() {
         </Route>
         <Route path="/user" element={<Outlet />}>
           <Route path="/user" element={<TaskUser />} />
-          <Route path="details" element={<TaskUserDetails />} />
+          <Route path="details/:taskid" element={<TaskUserDetails />} />
         </Route>
       </Routes>
     </div>

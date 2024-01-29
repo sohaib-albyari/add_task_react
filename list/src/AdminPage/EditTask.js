@@ -99,7 +99,7 @@ function EditTask() {
                   }}
                   required
                 />
-                <label htmlFor="">Task Name</label>
+                <label htmlFor="">Task Title</label>
               </div>
 
               <div className="inputbox">

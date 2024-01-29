@@ -33,7 +33,7 @@ function Task() {
                 <FontAwesomeIcon icon={faPlus} fade size="lg" />
                 Add New Task
               </Link>
-              <Link to={"/task/filter"} className="btn task-btn">
+              <Link to={"/task/filter"}  className="btn task-btn">
                 <FontAwesomeIcon icon={faArrowDownShortWide} fade size="lg" />
                 Task Filter
               </Link>
@@ -48,12 +48,12 @@ function Task() {
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Task</th>
                             <th>Department</th>
                             <th>Employee</th>
+                            <th>Title</th>
                             <th>Start Date</th>
                             <th>End Date</th>
-                            <th>Check</th>
+                            <th>Complete</th>
                             <th>Operation</th>
                           </tr>
                         </thead>

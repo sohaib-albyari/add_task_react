@@ -8,25 +8,15 @@ import axios from "axios";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-function Operation({setTasks,task,tasks}) {
-  // const [tasks, setTasks] = useState([]);
-
+function Operation({ setTasks, task, tasks }) {
   const [dlTasks, setDlTasks] = useState("");
 
-  // useEffect(() => {
-  //   getAllTasks();
-  // }, []);
-
-  // const getAllTasks = () => {
-  //   axios
-  //     .get("http://localhost:8000/task")
-  //     .then((res) => setTasks(res.data))
-  //     .catch((err) => console.log(err));
-  // };
 
   useEffect(() => {
-    setTasks(tasks.filter((t) => t.id !== dlTasks));
-  }, [dlTasks, tasks,setTasks]);
+    setTasks(tasks.filter((t) => t.id !== dlTasks)) ;
+  }, [dlTasks]);
+
+ 
 
   const navigate = useNavigate();
 
@@ -42,7 +32,6 @@ function Operation({setTasks,task,tasks}) {
           .delete(`http://localhost:8000/task/${task.id}`)
           .then((res) => {
             setDlTasks(id);
-            // setTasks((prev) => prev.filter((t) => t.id !== task.id));
             navigate("/task");
           })
           .catch((err) => console.log(err));

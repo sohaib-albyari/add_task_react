@@ -172,3 +172,7 @@
   .card-action-button:hover {
       background-color: rgba(33, 150, 243, .2);
   }
+
+  .label_user{
+    top: -5px !important;
+  }

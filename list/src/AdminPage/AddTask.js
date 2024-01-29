@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Route, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXmark,
@@ -22,6 +22,8 @@ function AddTask() {
   const [startdateTime, setStartDateTime] = useState({});
   const [enddateTime, setEndDateTime] = useState({});
 
+  const [links, setLinks] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/depatments")
@@ -36,13 +38,9 @@ function AddTask() {
 
   const navigate = useNavigate();
 
-  const cBtn = document.querySelector(".checkbtn");
   const formSubmit = (e) => {
-    // if (cBtn.checked) {
-    //   setCheck("Checked");
-    // }
     e.preventDefault();
-
+    setCheck("Not Checkedcc");
     axios
       .post("http://localhost:8000/task", {
         name: name,
@@ -69,7 +67,6 @@ function AddTask() {
   };
   return (
     <>
-
       <div className="container-fluid p-0">
         <div className="add-page">
           <section>
@@ -83,7 +80,7 @@ function AddTask() {
                   }}
                   required
                 />
-                <label htmlFor="">Task Name</label>
+                <label htmlFor="">Task Title</label>
               </div>
 
               <div className="inputbox">
@@ -194,21 +191,40 @@ function AddTask() {
                 <label htmlFor="">User</label>
               </div>
 
-              {/* <div className="checkbtndiv">
-                <label htmlFor="">
-                  <input
-                    className="checkbtn"
-                    type="checkbox"
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setCheck("Checked");
-                      } else {
-                        setCheck("Not Checked");
-                      }
-                    }}
-                  />
-                  Complete Task
-                </label>
+              {links &&
+                links.map((link, index) => {
+                  return (
+                    <div key={index} className="inputbox">
+                      <input
+                        type="text"
+                        onChange={(e) => {
+                          setName(e.target.value);
+                        }}
+                        required
+                      />
+                      <label htmlFor="">Link</label>
+                    </div>
+                  );
+                })}
+
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={(e) => setLinks(prev=>[...prev, "1"])}
+              >
+                <FontAwesomeIcon icon={faPlus} fade size="lg" /> Add Link
+              </button>
+              {/* <div className="inputbox">
+                <input
+                  type="text"
+                  // onChange={(e) => {
+                  //   setEndDateTime(e.target.value.split("T"));
+                  // }}
+                  required
+                />
+                <div className="icon-container">
+                </div>
+                <label htmlFor="">Add Link</label>
               </div> */}
 
               <button className="btn-task" type="submit">

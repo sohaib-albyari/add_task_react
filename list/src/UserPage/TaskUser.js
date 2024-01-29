@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function TaskUser() {
   const { userName } = useAppContext();
 
-  const [taskCheck, setTaskCheck] = useState("Not Checked");
+  // const [taskCheck, setTaskCheck] = useState("");
 
   const [task, setTask] = useState("");
 
@@ -23,16 +23,6 @@ function TaskUser() {
       .catch((err) => console.log(err));
   }, []);
 
-  const formSubmit = (id) => {
-    console.log(taskCheck);
-    axios
-      .patch(`http://localhost:8000/task/${id}`, {
-        check: taskCheck,
-      })
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
-    setTaskCheck("");
-  };
   return (
     <>
       <section className="intro">
@@ -46,11 +36,10 @@ function TaskUser() {
                       <table className="table text-white mb-0">
                         <thead>
                           <tr>
-                            <th>Task</th>
                             <th>Employee</th>
+                            <th>Task</th>
                             <th>Start Task</th>
                             <th>End Task</th>
-                            <th>Complete</th>
                             <th>Details</th>
                           </tr>
                         </thead>
@@ -58,54 +47,42 @@ function TaskUser() {
                           {task &&
                             task.map((userTask) => {
                               if (userTask.employee === userName) {
-                                // if (
-                                //   userTask.check &&
-                                //   userTask.check === "Not Checked"
-                                // ) {
-                                return (
-                                  <tr key={userTask.id}>
-                                    <td>{userTask.name}</td>
-                                    <td>{userTask.employee}</td>
-                                    <td>
-                                      {userTask.startdateTime[0]}{" "}
-                                      {userTask.startdateTime[1]}
-                                    </td>
-                                    <td>
-                                      {userTask.enddateTime[0]}{" "}
-                                      {userTask.enddateTime[1]}
-                                    </td>
-                                    <td>
-                                      <input
-                                        className="checkbtn"
-                                        type="checkbox"
-                                        onChange={(e) => {
-                                          if (e.target.checked) {
-                                            setTaskCheck("Checked");
-                                          } else {
-                                            setTaskCheck("Not Checked");
+                                if (
+                                  userTask.check &&
+                                  userTask.check === "Not Checked"
+                                ) {
+                                  return (
+                                    <tr key={userTask.id}>
+                                      <td>{userTask.employee}</td>
+                                      <td>{userTask.name}</td>
+                                      <td>
+                                        {userTask.startdateTime[0]}{" "}
+                                        {userTask.startdateTime[1]}
+                                      </td>
+                                      <td>
+                                        {userTask.enddateTime[0]}{" "}
+                                        {userTask.enddateTime[1]}
+                                      </td>
+                                      <td>
+                                        <OverlayTrigger
+                                          overlay={
+                                            <Tooltip id="t-2">Details</Tooltip>
                                           }
-                                          formSubmit(userTask.id);
-                                        }}
-                                      />
-                                    </td>
-                                    <td>
-                                      <OverlayTrigger
-                                        overlay={
-                                          <Tooltip id="t-2">Details</Tooltip>
-                                        }
-                                      >
-                                        <Link
-                                          to={`/user/details`}
-                                          className="btn btn-info btn-sm ms-2"
                                         >
-                                          <FontAwesomeIcon icon={faInfo} />
-                                        </Link>
-                                      </OverlayTrigger>
-                                    </td>
-                                  </tr>
-                                );
+                                          <Link
+                                            to={`/user/details/${userTask.id}`}
+                                            task={task}
+                                            className="btn btn-info btn-sm ms-2"
+                                          >
+                                            <FontAwesomeIcon icon={faInfo} />
+                                          </Link>
+                                        </OverlayTrigger>
+                                      </td>
+                                    </tr>
+                                  );
+                                }
                               }
-                              // }
+                              return true;
                             })}
                         </tbody>
                       </table>

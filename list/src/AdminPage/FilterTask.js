@@ -1,8 +1,6 @@
 import {
-  faArrowDownShortWide,
   faCaretDown,
   faHouse,
-  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -11,7 +9,7 @@ import TaskData from "../components/TaskData";
 import axios from "axios";
 
 function FilterTask() {
-  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState("");
   const [sections, setSections] = useState("");
 
   const [check, setCheck] = useState("");
@@ -20,7 +18,7 @@ function FilterTask() {
   const getAllTasks = () => {
     axios
       .get("http://localhost:8000/task")
-      .then((res) => setTask(res.data))
+      .then((res) => setTasks(res.data))
       .catch((err) => console.log(err));
 
     axios
@@ -35,7 +33,6 @@ function FilterTask() {
 
   return (
     <>
-     
       <section className="intro">
         <div className="mask d-flex align-items-center h-100">
           <div className="container">
@@ -101,7 +98,6 @@ function FilterTask() {
                         />
                       </div>
                       <label htmlFor="">Check</label>
-
                     </div>
                   </div>
 
@@ -111,28 +107,37 @@ function FilterTask() {
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Task</th>
                             <th>Department</th>
+                            <th>Employee</th>
+                            <th>Title</th>
                             <th>Start Date</th>
                             <th>End Date</th>
-                            <th>Check</th>
+                            <th>Complete</th>
                             <th>Operation</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {task &&
-                            task.map((task) => {
+                          {tasks &&
+                            tasks.map((task) => {
                               if (department === "All") {
                                 if (check === "All") {
                                   return (
                                     <tr key={task.id}>
-                                      <TaskData task={task} />
+                                      <TaskData
+                                        setTasks={setTasks}
+                                        tasks={tasks}
+                                        task={task}
+                                      />
                                     </tr>
                                   );
                                 } else if (check === task.check) {
                                   return (
                                     <tr key={task.id}>
-                                      <TaskData task={task} />
+                                       <TaskData
+                                        setTasks={setTasks}
+                                        tasks={tasks}
+                                        task={task}
+                                      />
                                     </tr>
                                   );
                                 }
@@ -140,13 +145,21 @@ function FilterTask() {
                                 if (check === "All") {
                                   return (
                                     <tr key={task.id}>
-                                      <TaskData task={task} />
+                                       <TaskData
+                                        setTasks={setTasks}
+                                        tasks={tasks}
+                                        task={task}
+                                      />
                                     </tr>
                                   );
                                 } else if (check === task.check) {
                                   return (
                                     <tr key={task.id}>
-                                      <TaskData task={task} />
+                                       <TaskData
+                                        setTasks={setTasks}
+                                        tasks={tasks}
+                                        task={task}
+                                      />
                                     </tr>
                                   );
                                 }
