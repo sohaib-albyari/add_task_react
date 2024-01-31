@@ -23,11 +23,31 @@ function AddTask() {
   const [startdateTime, setStartDateTime] = useState({});
   const [enddateTime, setEndDateTime] = useState({});
 
-  const [links, setLinks] = useState([]);
+  const [links, setLinks] = useState([{ id: 1, value: "" }]);
 
-  const [link, setLink] = useState({});
+  const addInputField = () => {
+    setLinks([...links, { id: links.length + 1, value: "" }]);
+  };
 
-  const [linkValue, setLinkValue] = useState("");
+  const deleteInputField = (id) => {
+    const updatedLinks = links.filter((field) => field.id !== id);
+    setLinks(updatedLinks);
+  };
+
+  const handleInputChange = (id, value) => {
+    const updatedLinks = links.map((field) =>
+      field.id === id ? { ...field, value } : field
+    );
+    setLinks(updatedLinks);
+  };
+
+  console.log(links);
+
+  // const [links, setLinks] = useState([]);
+
+  // const [link, setLink] = useState({});
+
+  // const [linkValue, setLinkValue] = useState("");
 
   useEffect(() => {
     axios
@@ -43,31 +63,7 @@ function AddTask() {
 
   const navigate = useNavigate();
 
-  const deleteLink = (index) => {
-    console.log(links);
-
-    setLinks(
-      links.map((value, i) => {
-        // console.log(i + "  " + index);
-        if (i !== index) {
-          return links.splice(index, 1);
-        }
-        return links;
-      })
-    );
-
-    // const filtered = links.splice(index,1);
-    // setLinks(filtered);
-    // links.filter(link => )
-    // setLink(Object.entries(link).splice(index,1))
-  };
-
-  // console.log(links, "LINKS");
-  // console.log(link, "LINK");
-
   const formSubmit = (e) => {
-    // setLink((prev) => [...prev, linkValue]);
-    // console.log(linkValue);
     e.preventDefault();
     setCheck("Not Complete");
     axios
@@ -79,7 +75,7 @@ function AddTask() {
         check: check,
         startdateTime: [startdateTime[0], startdateTime[1]],
         enddateTime: [enddateTime[0], enddateTime[1]],
-        // links: link,
+        links: links,
       })
       .then((res) => res)
       .catch((err) => console.log(err));
@@ -94,28 +90,10 @@ function AddTask() {
     });
   };
 
-  const [inputFields, setInputFields] = useState([{ id: 1, value: "" }]);
-
-  const addInputField = () => {
-    setInputFields([...inputFields, { id: inputFields.length + 1, value: "" }]);
-  };
-
-  const deleteInputField = (id) => {
-    const updatedInputFields = inputFields.filter((field) => field.id !== id);
-    setInputFields(updatedInputFields);
-  };
-
-  const handleInputChange = (id, value) => {
-    const updatedInputFields = inputFields.map((field) =>
-      field.id === id ? { ...field, value } : field
-    );
-    setInputFields(updatedInputFields);
-  };
-
   return (
     <>
       {/* <div>
-        {inputFields.map((field) => (
+        {links.map((field) => (
           <div className="inputbox" key={field.id}>
             <input
               type="text"
@@ -251,33 +229,8 @@ function AddTask() {
                 <label htmlFor="">User</label>
               </div>
 
-              {/* {links &&
-                links.map((l, index) => {
-                  return (
-                    <div key={index} id={`${index}`} className="inputbox">
-                      <input
-                        type="text"
-                        onChange={(e) => {
-                          setLink({ ...link, [index]: e.target.value });
-                        }}
-                        required
-                      />
-                      <div
-                        className="icon-container delete-link"
-                        onClick={() => deleteLink(index)}
-                      >
-                        <FontAwesomeIcon
-                          icon={faTrash}
-                          style={{ color: "#fff", zIndex: 100 }}
-                        />
-                      </div>
-                      <label htmlFor="">Link</label>
-                    </div>
-                  );
-                })} */}
-
               <div>
-                {inputFields.map((field) => (
+                {links.map((field) => (
                   <div className="inputbox" key={field.id}>
                     <input
                       type="text"
