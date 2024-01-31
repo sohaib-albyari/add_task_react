@@ -237,17 +237,13 @@ function AddTask() {
               </div>
 
               <div className="btns">
-                {/* <button class="btn-task">
-                  <span>Hover me!</span>
-                </button> */}
+
                 <button
                   type="button"
                   className="btn-task"
                   onClick={addInputField}
-                  // onClick={(e) => setLinks((prev) => [...prev, ""])}
                 >
                   <span>
-                    {" "}
                     <FontAwesomeIcon icon={faPlus} fade size="lg" /> Add Link
                   </span>
                 </button>

@@ -5,6 +5,8 @@ import {
   faPenToSquare,
   faCalendarDays,
   faCaretDown,
+  faPlus,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -24,6 +26,15 @@ function EditTask() {
   const [enddateTime, setEndDateTime] = useState({});
 
   const [links, setLinks] = useState([{ id: 1, value: "" }]);
+
+  const addInputField = () => {
+    setLinks([...links, { id: links.length + 1, value: "" }]);
+  };
+
+  const deleteInputField = (id) => {
+    const updatedLinks = links.filter((field) => field.id !== id);
+    setLinks(updatedLinks);
+  };
 
   const handleInputChange = (id, value) => {
     const updatedLinks = links.map((field) =>
@@ -243,6 +254,18 @@ function EditTask() {
                       <label className="label_user" htmlFor="">
                         Link {link.id}
                       </label>
+
+                      <div
+                      className="icon-container delete-link"
+                      onClick={() => deleteInputField(link.id)}
+                    >
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        style={{ color: "#fff", zIndex: 100 }}
+                      />
+                      <span className="ms-1">Delete</span>
+                    </div>
+                    
                     </div>
                   );
                 })}
@@ -266,6 +289,16 @@ function EditTask() {
               </div>
 
               <div className="btns">
+                <button
+                  type="button"
+                  className="btn-task"
+                  onClick={addInputField}
+                >
+                  <span>
+                    <FontAwesomeIcon icon={faPlus} fade size="lg" /> Add Link
+                  </span>
+                </button>
+
                 <button className="btn-task" type="submit">
                   <span>
                     <FontAwesomeIcon icon={faPenToSquare} fade size="lg" />
