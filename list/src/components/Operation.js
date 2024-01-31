@@ -11,12 +11,9 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 function Operation({ setTasks, task, tasks }) {
   const [dlTasks, setDlTasks] = useState("");
 
-
   useEffect(() => {
-    setTasks(tasks.filter((t) => t.id !== dlTasks)) ;
+    setTasks(tasks.filter((t) => t.id !== dlTasks));
   }, [dlTasks]);
-
- 
 
   const navigate = useNavigate();
 

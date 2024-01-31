@@ -49,7 +49,7 @@ function TaskUser() {
                               if (userTask.employee === userName) {
                                 if (
                                   userTask.check &&
-                                  userTask.check === "Not Checked"
+                                  userTask.check === "Not Complete"
                                 ) {
                                   return (
                                     <tr key={userTask.id}>

@@ -1,7 +1,4 @@
-import {
-  faCaretDown,
-  faHouse,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -88,8 +85,8 @@ function FilterTask() {
                       >
                         <option>--</option>
                         <option value="All">All</option>
-                        <option value="Checked">Checked</option>
-                        <option value="Not Checked">Not Checked</option>
+                        <option value="Complete">Complete</option>
+                        <option value="Not Complete">Not Complete</option>
                       </select>
                       <div className="icon-container">
                         <FontAwesomeIcon
@@ -97,7 +94,7 @@ function FilterTask() {
                           style={{ color: "#fff" }}
                         />
                       </div>
-                      <label htmlFor="">Check</label>
+                      <label htmlFor="">Complete</label>
                     </div>
                   </div>
 
@@ -133,7 +130,7 @@ function FilterTask() {
                                 } else if (check === task.check) {
                                   return (
                                     <tr key={task.id}>
-                                       <TaskData
+                                      <TaskData
                                         setTasks={setTasks}
                                         tasks={tasks}
                                         task={task}
@@ -145,7 +142,7 @@ function FilterTask() {
                                 if (check === "All") {
                                   return (
                                     <tr key={task.id}>
-                                       <TaskData
+                                      <TaskData
                                         setTasks={setTasks}
                                         tasks={tasks}
                                         task={task}
@@ -155,7 +152,7 @@ function FilterTask() {
                                 } else if (check === task.check) {
                                   return (
                                     <tr key={task.id}>
-                                       <TaskData
+                                      <TaskData
                                         setTasks={setTasks}
                                         tasks={tasks}
                                         task={task}

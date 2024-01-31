@@ -16,7 +16,7 @@ function EditTask() {
   const [users, setUsers] = useState("");
 
   const [name, setName] = useState("");
-  const [check, setCheck] = useState("Not Checked");
+  const [check, setCheck] = useState("Not Complete");
   const [department, setDepartment] = useState("");
   const [employee, setEmployee] = useState("");
   const [description, setDescription] = useState("");
@@ -83,8 +83,6 @@ function EditTask() {
 
   return (
     <>
-
-
       <div className="container-fluid p-0">
         <div className="add-page">
           <section>
@@ -225,29 +223,31 @@ function EditTask() {
                   <input
                     className="checkbtn"
                     type="checkbox"
-                    checked={check === "Checked" ? true : false}
+                    checked={check === "Complete" ? true : false}
                     onChange={(e) => {
                       if (e.target.checked) {
-                        setCheck("Checked");
+                        setCheck("Complete");
                       } else {
-                        setCheck("Not Checked");
+                        setCheck("Not Complete");
                       }
                     }}
                   />
                   Complete Task
                 </label>
               </div>
-
-              <button className="btn-task" type="submit">
-                <FontAwesomeIcon icon={faPenToSquare} fade size="lg" />
-                &nbsp;Eidt Task
-              </button>
-              <button className="btn-task">
-                <Link className="exit" to={"/task"}>
-                  <FontAwesomeIcon icon={faXmark} fade size="lg" />
-                  &nbsp;Cancel
+              <div className="btns">
+                <button className="btn-task" type="submit">
+                  <span><FontAwesomeIcon icon={faPenToSquare} fade size="lg" />
+                  &nbsp;Eidt Task</span>
+                </button>
+                <Link className="btn-task" to={"/task"}>
+                  <span>
+                    {" "}
+                    <FontAwesomeIcon icon={faXmark} fade size="lg" />
+                    &nbsp;Cancel
+                  </span>
                 </Link>
-              </button>
+              </div>
             </form>
           </section>
         </div>

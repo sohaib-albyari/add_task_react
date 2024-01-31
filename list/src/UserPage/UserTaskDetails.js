@@ -1,13 +1,12 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../cssPage/tableStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquareCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,  faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 function TaskUserDetails() {
-  
   const navigate = useNavigate();
 
   const [taskDetails, setTaskDetails] = useState("");
@@ -31,7 +30,9 @@ function TaskUserDetails() {
     }).then((data) => {
       if (data.isConfirmed) {
         axios
-          .delete(`http://localhost:8000/task/${taskDetails.id}`)
+          .patch(`http://localhost:8000/task/${taskid}`, {
+            check: "Complete",
+          })
           .then((res) => {
             navigate("/user");
           })
@@ -127,17 +128,18 @@ function TaskUserDetails() {
                 </div>
                 <label htmlFor="">End Task Date</label>
               </div> */}
-
-              <button className="btn-task" type="submit">
-                <FontAwesomeIcon icon={faSquareCheck} fade size="lg" />{" "}
-                &nbsp;Complete Task
-              </button>
-              <button className="btn-task">
-                <Link className="exit" to={"/user"}>
-                  <FontAwesomeIcon icon={faXmark} fade size="lg" />
-                  &nbsp;Cancel
-                </Link>
-              </button>
+              <div className="btns">
+                <button className="btn-task" type="submit">
+                  <span><FontAwesomeIcon icon={faCheck} fade size="lg" />{" "}
+                  &nbsp;Complete Task</span>
+                </button>
+                {/* <button className="btn-task"> */}
+                  <Link className="btn-task" to={"/user"}>
+                    <span><FontAwesomeIcon icon={faXmark} fade size="lg" />
+                    &nbsp;Cancel</span>
+                  </Link>
+                {/* </button> */}
+              </div>
             </form>
           </section>
         </div>

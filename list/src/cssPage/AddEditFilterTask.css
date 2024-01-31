@@ -7,11 +7,6 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /* background-image: url(../image/logo.png); */
-  /* background-color: #380d59; */
-  /* background-repeat: no-repeat; */
-  /* background-position: center; */
-  /* background-size: contain; */
   width: 100% !important;
   max-width: 100%;
 }
@@ -90,7 +85,7 @@ select~label {
   z-index: 101;
 }
 
-.inputbox input[type="datetime-local"]::-webkit-calendar-picker-indicator{
+.inputbox input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -149,34 +144,72 @@ select~label {
   text-decoration: underline;
 }
 
-.btn-task,
-.exit {
-  width: 55% !important;
-  height: 40px;
-  border-radius: 40px !important;
-  background-color: rgb(255, 255, 255, 1);
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.4s ease;
-  margin-bottom: 10px !important;
-  padding: 0;
-  color: #000 !important;
-}
-
-.btn-task:hover,
-.btn-task:hover .exit {
-  background-color: rgb(255, 255, 255, 0.5);
-}
-
-.exit {
-  text-decoration: none;
+.btns {
+  width: 50%;
   display: flex;
-  width: 100% !important;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  margin: auto;
+}
 
+.btn-task {
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #2c0346;
+  padding: 1rem 3rem;
+  margin: 5px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.btn-task span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-task:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #3bb3c6;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn-task:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+.delete-link {
+  z-index: 1000;
+  cursor: pointer;
+  color: #fff;
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+
+.delete-link:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease;
+}
+
+.delete-link:hover svg {
+  color: rgba(255, 0, 0, 0.404) !important;
+  transition: all 0.5s ease;
 }

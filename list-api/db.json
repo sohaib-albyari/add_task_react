@@ -1,26 +1,14 @@
 {
-  "depatments": [
-    "Developers",
-    "Designers",
-    "Managers",
-    "Hr",
-    "Admins"
-  ],
+  "depatments": ["Developers", "Designers", "Managers", "Hr", "Admins"],
   "task": [
     {
       "name": "asdas",
       "department": "Developers",
       "employee": "rami",
       "description": "dasdasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-21",
-        "10:18"
-      ],
-      "enddateTime": [
-        "2024-01-22",
-        "10:18"
-      ],
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-21", "10:18"],
+      "enddateTime": ["2024-01-22", "10:18"],
       "id": "2c2d"
     },
     {
@@ -29,30 +17,18 @@
       "department": "Hr",
       "employee": "rami",
       "description": "dasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-21",
-        "10:18"
-      ],
-      "enddateTime": [
-        "2024-01-22",
-        "10:18"
-      ]
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-21", "10:18"],
+      "enddateTime": ["2024-01-22", "10:18"]
     },
     {
       "name": "dsadasd",
       "department": "Designers",
       "employee": "jafar",
       "description": "asd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "11:22"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:22"
-      ],
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-22", "11:22"],
+      "enddateTime": ["2024-01-23", "11:22"],
       "id": "c6cb"
     },
     {
@@ -60,15 +36,9 @@
       "department": "Developers",
       "employee": "jafar",
       "description": "dasdasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "11:25"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:25"
-      ],
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-22", "11:25"],
+      "enddateTime": ["2024-01-23", "11:25"],
       "id": "746e"
     },
     {
@@ -77,30 +47,18 @@
       "department": "Managers",
       "employee": "rami",
       "description": "asdasdasd",
-      "check": "Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "11:48"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:48"
-      ]
+      "check": "Complete",
+      "startdateTime": ["2024-01-22", "11:48"],
+      "enddateTime": ["2024-01-23", "11:48"]
     },
     {
       "name": "sadasdasda",
       "department": "Developers",
       "employee": "admin",
       "description": "sdasdasdasdasda",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "14:06"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "14:06"
-      ],
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-22", "14:06"],
+      "enddateTime": ["2024-01-23", "14:06"],
       "id": "b43e"
     },
     {
@@ -109,30 +67,18 @@
       "department": "Designers",
       "employee": "jafar",
       "description": "dasdasdasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-16",
-        "16:40"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "16:40"
-      ]
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-16", "16:40"],
+      "enddateTime": ["2024-01-23", "16:40"]
     },
     {
       "name": "asdasd",
       "department": "Managers",
       "employee": "jafar",
       "description": "asdasdasd",
-      "check": "Checked",
-      "startdateTime": [
-        "2024-01-03",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-02",
-        "16:41"
-      ],
+      "check": "Complete",
+      "startdateTime": ["2024-01-03", "16:41"],
+      "enddateTime": ["2024-01-02", "16:41"],
       "id": "de3f"
     },
     {
@@ -141,31 +87,9 @@
       "department": "Managers",
       "employee": "rami",
       "description": "asdasdasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-24",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-24",
-        "16:41"
-      ]
-    },
-    {
-      "name": "asdasdas",
-      "department": "Managers",
-      "employee": "rami",
-      "description": "pplases reviwe task",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-22",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "16:41"
-      ],
-      "id": "0916"
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-24", "16:41"],
+      "enddateTime": ["2024-01-24", "16:41"]
     },
     {
       "id": "34d3",
@@ -173,31 +97,19 @@
       "department": "Designers",
       "employee": "jafar",
       "description": "sdasda",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-23",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-02",
-        "16:41"
-      ]
+      "check": "Complete",
+      "startdateTime": ["2024-01-23", "16:41"],
+      "enddateTime": ["2024-01-02", "16:41"]
     },
     {
-      "id": "eff3",
-      "name": "asdasd",
+      "name": "edit",
       "department": "Developers",
       "employee": "jafar",
       "description": "asdasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-10",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-15",
-        "16:41"
-      ]
+      "check": "Not Complete",
+      "startdateTime": ["2024-01-10", "16:41"],
+      "enddateTime": ["2024-01-15", "16:41"],
+      "id": "eff3"
     },
     {
       "id": "b3fd",
@@ -205,47 +117,19 @@
       "department": "Designers",
       "employee": "jafar",
       "description": "sdasdasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-11",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-17",
-        "16:41"
-      ]
+      "check": "Complete",
+      "startdateTime": ["2024-01-11", "16:41"],
+      "enddateTime": ["2024-01-17", "16:41"]
     },
     {
-      "id": "6d85",
-      "name": "asdasdasda",
+      "name": "Editsss",
       "department": "Developers",
       "employee": "jafar",
       "description": "sdasdasdasd",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-23",
-        "16:42"
-      ],
-      "enddateTime": [
-        "2024-01-24",
-        "16:42"
-      ]
-    },
-    {
-      "name": "sadasdasd",
-      "department": "Developers",
-      "employee": "sohaib",
-      "description": "review task",
-      "check": "Not Checked",
-      "startdateTime": [
-        "2024-01-28",
-        "17:45"
-      ],
-      "enddateTime": [
-        "2024-01-29",
-        "17:45"
-      ],
-      "id": "8c85"
+      "check": "Complete",
+      "startdateTime": ["2024-01-23", "16:42"],
+      "enddateTime": ["2024-01-24", "16:42"],
+      "id": "6d85"
     }
   ],
   "user": [

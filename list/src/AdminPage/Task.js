@@ -9,7 +9,6 @@ import TaskData from "../components/TaskData";
 import axios from "axios";
 
 function Task() {
-
   const [tasks, setTasks] = useState([]);
 
   const getAllTasks = () => {
@@ -33,7 +32,7 @@ function Task() {
                 <FontAwesomeIcon icon={faPlus} fade size="lg" />
                 Add New Task
               </Link>
-              <Link to={"/task/filter"}  className="btn task-btn">
+              <Link to={"/task/filter"} className="btn task-btn">
                 <FontAwesomeIcon icon={faArrowDownShortWide} fade size="lg" />
                 Task Filter
               </Link>
@@ -62,7 +61,11 @@ function Task() {
                             tasks.map((task) => {
                               return (
                                 <tr key={task.id}>
-                                  <TaskData setTasks={setTasks} task={task} tasks={tasks} />
+                                  <TaskData
+                                    setTasks={setTasks}
+                                    task={task}
+                                    tasks={tasks}
+                                  />
                                 </tr>
                               );
                             })}
