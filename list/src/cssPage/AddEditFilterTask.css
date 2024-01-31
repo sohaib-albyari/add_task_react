@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
+select {
+  cursor: pointer !important;
+}
 
 .add-page,
 .edit-page {
@@ -72,7 +75,8 @@ select~label {
 
 .inputbox input,
 .inputbox textarea,
-.inputbox select {
+.inputbox select,
+.inputbox a {
   width: 100%;
   height: 60px;
   background: transparent;
@@ -187,7 +191,7 @@ select~label {
   width: 143%;
   background: #3bb3c6;
   -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
   transform: translateX(-98%) translateY(-25%) rotate(45deg);
 }

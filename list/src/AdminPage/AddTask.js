@@ -41,13 +41,6 @@ function AddTask() {
     setLinks(updatedLinks);
   };
 
-  console.log(links);
-
-  // const [links, setLinks] = useState([]);
-
-  // const [link, setLink] = useState({});
-
-  // const [linkValue, setLinkValue] = useState("");
 
   useEffect(() => {
     axios
@@ -92,18 +85,6 @@ function AddTask() {
 
   return (
     <>
-      {/* <div>
-        {links.map((field) => (
-          <div className="inputbox" key={field.id}>
-            <input
-              type="text"
-              value={field.value}
-              onChange={(e) => handleInputChange(field.id, e.target.value)}
-            />
-            <button onClick={() => deleteInputField(field.id)}>Delete</button>
-          </div>
-        ))}
-      </div> */}
 
       <div className="container-fluid p-0">
         <div className="add-page">

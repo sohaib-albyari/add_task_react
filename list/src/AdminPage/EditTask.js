@@ -23,6 +23,15 @@ function EditTask() {
   const [startdateTime, setStartDateTime] = useState({});
   const [enddateTime, setEndDateTime] = useState({});
 
+  const [links, setLinks] = useState([{ id: 1, value: "" }]);
+
+  const handleInputChange = (id, value) => {
+    const updatedLinks = links.map((field) =>
+      field.id === id ? { ...field, value } : field
+    );
+    setLinks(updatedLinks);
+  };
+
   const { taskid } = useParams();
 
   const navigate = useNavigate();
@@ -51,13 +60,13 @@ function EditTask() {
         setDescription(res.data.description);
         setStartDateTime(res.data.startdateTime);
         setEndDateTime(res.data.enddateTime);
+        setLinks(res.data.links);
       })
       .catch((err) => console.log(err));
   }, [taskid]);
 
   const formSubmit = (e) => {
     e.preventDefault();
-
     axios
       .put(`http://localhost:8000/task/${taskid}`, {
         name,
@@ -67,6 +76,7 @@ function EditTask() {
         check,
         startdateTime,
         enddateTime,
+        links,
       })
       .then((res) => setTask(res.data))
       .catch((err) => console.log(err));
@@ -218,6 +228,25 @@ function EditTask() {
                 <label htmlFor="">User</label>
               </div>
 
+              {links &&
+                links.map((link) => {
+                  return (
+                    <div className="inputbox" key={link.id}>
+                      <input
+                        type="text"
+                        defaultValue={link.value}
+                        onChange={(e) => {
+                          handleInputChange(link.id, e.target.value);
+                        }}
+                        required
+                      />
+                      <label className="label_user" htmlFor="">
+                        Link {link.id}
+                      </label>
+                    </div>
+                  );
+                })}
+
               <div className="checkbtndiv">
                 <label htmlFor="">
                   <input
@@ -235,11 +264,15 @@ function EditTask() {
                   Complete Task
                 </label>
               </div>
+
               <div className="btns">
                 <button className="btn-task" type="submit">
-                  <span><FontAwesomeIcon icon={faPenToSquare} fade size="lg" />
-                  &nbsp;Eidt Task</span>
+                  <span>
+                    <FontAwesomeIcon icon={faPenToSquare} fade size="lg" />
+                    &nbsp;Eidt Task
+                  </span>
                 </button>
+
                 <Link className="btn-task" to={"/task"}>
                   <span>
                     {" "}

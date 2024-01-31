@@ -13,7 +13,7 @@ function Nav() {
 
   useEffect(() => {
     if (userName === "") {
-      navigate("/singin");
+      // navigate("/singin");
     }
   }, [userName]);
 
