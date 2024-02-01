@@ -10,6 +10,7 @@ import SingIn from "./Pages/SingIn";
 import Nav from "./components/Nav";
 import TaskUser from "./Pages/UserPage/TaskUser";
 import TaskUserDetails from "./Pages/UserPage/UserTaskDetails";
+import AddUser from "./Pages/AdminPage/AddUser";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/task" element={<Outlet />}>
           <Route path="/task" element={<Task />} />
           <Route path="add" element={<AddTask />} />
+          <Route path="adduser" element={<AddUser />} />
           <Route path="filter" element={<FilterTask />} />
           <Route path="edit/:taskid" element={<EditTask />} />
         </Route>
@@ -34,4 +36,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
