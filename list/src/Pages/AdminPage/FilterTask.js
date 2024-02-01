@@ -2,15 +2,17 @@ import { faCaretDown, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import TaskData from "../components/TaskData";
+import TaskData from "../../components/TaskData";
 import axios from "axios";
 
 function FilterTask() {
   const [tasks, setTasks] = useState("");
   const [sections, setSections] = useState("");
+  const [users, setUsers] = useState("");
 
   const [check, setCheck] = useState("");
   const [department, setDepartment] = useState("");
+  const [user, setUser] = useState("");
 
   const getAllTasks = () => {
     axios
@@ -21,6 +23,11 @@ function FilterTask() {
     axios
       .get("http://localhost:8000/depatments")
       .then((res) => setSections(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:8000/user")
+      .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -59,7 +66,6 @@ function FilterTask() {
                           sections.map((dep) => {
                             return (
                               <option key={dep} value={dep}>
-                                {" "}
                                 {dep}
                               </option>
                             );
@@ -71,7 +77,53 @@ function FilterTask() {
                           style={{ color: "#fff" }}
                         />
                       </div>
-                      <label htmlFor="">Department</label>
+                      <label htmlFor="">Departments</label>
+                    </div>
+
+                    <div className="inputbox w-25">
+                      <select
+                        className="form-select"
+                        id="Select"
+                        aria-label="Default select example"
+                        onChange={(e) => {
+                          setUser(e.target.value);
+                        }}
+                      >
+                        <option>--</option>
+                        <option
+                          value="All"
+                          style={{
+                            display: department === "All" ? "block" : "none",
+                          }}
+                        >
+                          All
+                        </option>
+                        {users &&
+                          users.map((user) => {
+                            if (department === "All") {
+                              return (
+                                <option key={user.id} value={user.username}>
+                                  {user.username}
+                                </option>
+                              );
+                            }
+
+                            if (department === user.department) {
+                              return (
+                                <option key={user.id} value={user.username}>
+                                  {user.username}
+                                </option>
+                              );
+                            }
+                          })}
+                      </select>
+                      <div className="icon-container">
+                        <FontAwesomeIcon
+                          icon={faCaretDown}
+                          style={{ color: "#fff" }}
+                        />
+                      </div>
+                      <label htmlFor="">Employee</label>
                     </div>
 
                     <div className="inputbox w-25">
@@ -116,7 +168,7 @@ function FilterTask() {
                         <tbody>
                           {tasks &&
                             tasks.map((task) => {
-                              if (department === "All") {
+                              if (department === "All" && user === "All") {
                                 if (check === "All") {
                                   return (
                                     <tr key={task.id}>
@@ -138,7 +190,35 @@ function FilterTask() {
                                     </tr>
                                   );
                                 }
-                              } else if (department === task.department) {
+                              } else if (
+                                department === task.department &&
+                                user === task.employee
+                              ) {
+                                // if (user === task.employee) {
+
+                                // }
+                                if (check === "All") {
+                                  return (
+                                    <tr key={task.id}>
+                                      <TaskData
+                                        setTasks={setTasks}
+                                        tasks={tasks}
+                                        task={task}
+                                      />
+                                    </tr>
+                                  );
+                                } else if (check === task.check) {
+                                  return (
+                                    <tr key={task.id}>
+                                      <TaskData
+                                        setTasks={setTasks}
+                                        tasks={tasks}
+                                        task={task}
+                                      />
+                                    </tr>
+                                  );
+                                }
+                              } else if (user === task.employee) {
                                 if (check === "All") {
                                   return (
                                     <tr key={task.id}>
@@ -164,16 +244,6 @@ function FilterTask() {
                               return true;
                             })}
                         </tbody>
-                        {/* <tbody>
-                          {tasks &&
-                            tasks.map((task) => {
-                              return (
-                                <tr key={task.id}>
-                                  <TaskData task={task} />
-                                </tr>
-                              );
-                            })}
-                        </tbody> */}
                       </table>
                     </div>
                   </div>

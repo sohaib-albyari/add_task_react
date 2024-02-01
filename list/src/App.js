@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AddTask from "./AdminPage/AddTask";
-import EditTask from "./AdminPage/EditTask";
-import FilterTask from "./AdminPage/FilterTask";
+import AddTask from "./Pages/AdminPage/AddTask";
+import EditTask from "./Pages/AdminPage/EditTask";
+import FilterTask from "./Pages/AdminPage/FilterTask";
 import { Outlet } from "react-router-dom";
 import Registration from "./Pages/Registration";
-import Task from "./AdminPage/Task";
+import Task from "./Pages/AdminPage/Task";
 import SingIn from "./Pages/SingIn";
 import Nav from "./components/Nav";
-import TaskUser from "./UserPage/TaskUser";
-import TaskUserDetails from "./UserPage/UserTaskDetails";
+import TaskUser from "./Pages/UserPage/TaskUser";
+import TaskUserDetails from "./Pages/UserPage/UserTaskDetails";
 
 function App() {
   return (

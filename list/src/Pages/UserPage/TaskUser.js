@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import {  useParams } from "react-router-dom";
 import axios from "axios";
 
-import { useAppContext } from "../context/appContext";
+import { useAppContext } from "../../context/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import OverlayTrigger from "react-bootstrap/esm/OverlayTrigger";

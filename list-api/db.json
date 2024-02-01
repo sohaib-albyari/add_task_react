@@ -1,11 +1,5 @@
 {
-  "depatments": [
-    "Developers",
-    "Designers",
-    "Managers",
-    "Hr",
-    "Admins"
-  ],
+  "depatments": ["Developers", "Designers", "Managers", "Hr", "Admins"],
   "task": [
     {
       "name": "asdas",
@@ -13,14 +7,8 @@
       "employee": "rami",
       "description": "dasdasdasd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-21",
-        "10:18"
-      ],
-      "enddateTime": [
-        "2024-01-22",
-        "10:18"
-      ],
+      "startdateTime": ["2024-01-21", "10:18"],
+      "enddateTime": ["2024-01-22", "10:18"],
       "links": [
         {
           "id": 1,
@@ -36,14 +24,8 @@
       "employee": "rami",
       "description": "dasdasd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-21",
-        "10:18"
-      ],
-      "enddateTime": [
-        "2024-01-22",
-        "10:18"
-      ],
+      "startdateTime": ["2024-01-21", "10:18"],
+      "enddateTime": ["2024-01-22", "10:18"],
       "links": []
     },
     {
@@ -52,14 +34,8 @@
       "employee": "jafar",
       "description": "asd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-22",
-        "11:22"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:22"
-      ],
+      "startdateTime": ["2024-01-22", "11:22"],
+      "enddateTime": ["2024-01-23", "11:22"],
       "id": "c6cb",
       "links": []
     },
@@ -69,14 +45,8 @@
       "employee": "jafar",
       "description": "dasdasdasd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-22",
-        "11:25"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:25"
-      ],
+      "startdateTime": ["2024-01-22", "11:25"],
+      "enddateTime": ["2024-01-23", "11:25"],
       "id": "746e",
       "links": []
     },
@@ -87,14 +57,8 @@
       "employee": "rami",
       "description": "asdasdasd",
       "check": "Complete",
-      "startdateTime": [
-        "2024-01-22",
-        "11:48"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "11:48"
-      ],
+      "startdateTime": ["2024-01-22", "11:48"],
+      "enddateTime": ["2024-01-23", "11:48"],
       "links": []
     },
     {
@@ -103,14 +67,8 @@
       "employee": "admin",
       "description": "sdasdasdasdasda",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-22",
-        "14:06"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "14:06"
-      ],
+      "startdateTime": ["2024-01-22", "14:06"],
+      "enddateTime": ["2024-01-23", "14:06"],
       "id": "b43e",
       "links": []
     },
@@ -120,14 +78,8 @@
       "employee": "jafar",
       "description": "dasdasdasdasd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-16",
-        "16:40"
-      ],
-      "enddateTime": [
-        "2024-01-23",
-        "16:40"
-      ],
+      "startdateTime": ["2024-01-16", "16:40"],
+      "enddateTime": ["2024-01-23", "16:40"],
       "links": [
         {
           "id": 1,
@@ -142,14 +94,8 @@
       "employee": "jafar",
       "description": "asdasdasd",
       "check": "Complete",
-      "startdateTime": [
-        "2024-01-03",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-02",
-        "16:41"
-      ],
+      "startdateTime": ["2024-01-03", "16:41"],
+      "enddateTime": ["2024-01-02", "16:41"],
       "id": "de3f",
       "links": []
     },
@@ -160,14 +106,8 @@
       "employee": "rami",
       "description": "asdasdasdasd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-24",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-24",
-        "16:41"
-      ],
+      "startdateTime": ["2024-01-24", "16:41"],
+      "enddateTime": ["2024-01-24", "16:41"],
       "links": []
     },
     {
@@ -177,14 +117,8 @@
       "employee": "jafar",
       "description": "sdasda",
       "check": "Complete",
-      "startdateTime": [
-        "2024-01-23",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-02",
-        "16:41"
-      ],
+      "startdateTime": ["2024-01-23", "16:41"],
+      "enddateTime": ["2024-01-02", "16:41"],
       "links": []
     },
     {
@@ -193,14 +127,8 @@
       "employee": "jafar",
       "description": "asdasdasd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-10",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-15",
-        "16:41"
-      ],
+      "startdateTime": ["2024-01-10", "16:41"],
+      "enddateTime": ["2024-01-15", "16:41"],
       "id": "eff3",
       "links": []
     },
@@ -211,14 +139,8 @@
       "employee": "jafar",
       "description": "sdasdasdasd",
       "check": "Complete",
-      "startdateTime": [
-        "2024-01-11",
-        "16:41"
-      ],
-      "enddateTime": [
-        "2024-01-17",
-        "16:41"
-      ],
+      "startdateTime": ["2024-01-11", "16:41"],
+      "enddateTime": ["2024-01-17", "16:41"],
       "links": []
     },
     {
@@ -227,14 +149,8 @@
       "employee": "jafar",
       "description": "sdasdasdasd",
       "check": "Complete",
-      "startdateTime": [
-        "2024-01-23",
-        "16:42"
-      ],
-      "enddateTime": [
-        "2024-01-24",
-        "16:42"
-      ],
+      "startdateTime": ["2024-01-23", "16:42"],
+      "enddateTime": ["2024-01-24", "16:42"],
       "id": "6d85",
       "links": []
     },
@@ -244,14 +160,8 @@
       "employee": "sohaib",
       "description": "edit",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-31",
-        "11:36"
-      ],
-      "enddateTime": [
-        "2024-02-01",
-        "11:36"
-      ],
+      "startdateTime": ["2024-01-31", "11:36"],
+      "enddateTime": ["2024-02-01", "11:36"],
       "links": [
         {
           "id": 1,
@@ -270,14 +180,8 @@
       "employee": "sohaib",
       "description": "asdasdasd",
       "check": "Not Complete",
-      "startdateTime": [
-        "2024-01-31",
-        "12:48"
-      ],
-      "enddateTime": [
-        "2024-01-31",
-        "12:48"
-      ],
+      "startdateTime": ["2024-01-31", "12:48"],
+      "enddateTime": ["2024-01-31", "12:48"],
       "links": [
         {
           "id": 1,
@@ -301,42 +205,42 @@
       "username": "sohaib",
       "email": "salbyari8@gmail.com",
       "password": "123",
-      "department":"Developers"
+      "department": "Developers"
     },
     {
       "id": "e191",
       "username": "jafar",
       "email": "jafar@gmail.com",
       "password": "123",
-      "department":"Designers"
+      "department": "Designers"
     },
     {
       "id": "a35d",
       "username": "rami",
       "email": "rami@gmail.com",
       "password": "123",
-      "department":"Designers"
-
+      "department": "Designers"
     },
     {
       "id": "455e",
       "username": "mohammed",
       "email": "mohammed@gmail.com",
       "password": "123",
-      "department":"Developers"
+      "department": "Developers"
     },
     {
       "id": "699c",
       "username": "admin",
       "email": "admin@gmail.com",
-      "password": "123"
+      "password": "123",
+      "department": "Managers"
     },
     {
       "id": "39c4",
       "username": "ehab",
       "email": "ehab@gmail.com",
       "password": "123",
-      "department":"Designers"
+      "department": "Designers"
     }
   ]
 }

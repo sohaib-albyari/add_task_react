@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXmark,
-  faPlus,
-  faCaretDown,
+  faPenToSquare,
   faCalendarDays,
+  faCaretDown,
   faTrash,
+  faLink,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-import "../cssPage/AddEditFilterTask.css";
 
-function AddTask() {
+function EditTask() {
+  const [task, setTask] = useState({});
   const [sections, setSections] = useState("");
   const [users, setUsers] = useState("");
-  const [employee, setEmployee] = useState("");
+
   const [name, setName] = useState("");
   const [check, setCheck] = useState("Not Complete");
   const [department, setDepartment] = useState("");
+  const [employee, setEmployee] = useState("");
   const [description, setDescription] = useState("");
   const [startdateTime, setStartDateTime] = useState({});
   const [enddateTime, setEndDateTime] = useState({});
@@ -41,6 +43,9 @@ function AddTask() {
     setLinks(updatedLinks);
   };
 
+  const { taskid } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -54,27 +59,41 @@ function AddTask() {
       .catch((err) => console.log(err));
   }, []);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/task/${taskid}`)
+      .then((res) => {
+        setTask(res.data);
+        setName(res.data.name);
+        setCheck(res.data.check);
+        setDepartment(res.data.department);
+        setEmployee(res.data.employee);
+        setDescription(res.data.description);
+        setStartDateTime(res.data.startdateTime);
+        setEndDateTime(res.data.enddateTime);
+        setLinks(res.data.links);
+      })
+      .catch((err) => console.log(err));
+  }, [taskid]);
 
   const formSubmit = (e) => {
     e.preventDefault();
-    setCheck("Not Complete");
     axios
-      .post("http://localhost:8000/task", {
-        name: name,
-        department: department,
-        employee: employee,
-        description: description,
-        check: check,
-        startdateTime: [startdateTime[0], startdateTime[1]],
-        enddateTime: [enddateTime[0], enddateTime[1]],
-        links: links,
+      .put(`http://localhost:8000/task/${taskid}`, {
+        name,
+        department,
+        employee,
+        description,
+        check,
+        startdateTime,
+        enddateTime,
+        links,
       })
-      .then((res) => res)
+      .then((res) => setTask(res.data))
       .catch((err) => console.log(err));
 
     Swal.fire({
-      title: `Has Added "${name}" successfully.`,
+      title: `Has updated "${task.name}" successfully.`,
       icon: "success",
     }).then((data) => {
       if (data.isConfirmed) {
@@ -85,15 +104,15 @@ function AddTask() {
 
   return (
     <>
-
       <div className="container-fluid p-0">
         <div className="add-page">
           <section>
             <form onSubmit={formSubmit}>
-              <h1>Add Task</h1>
+              <h1>Eidt Task</h1>
               <div className="inputbox">
                 <input
                   type="text"
+                  defaultValue={task.name}
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
@@ -105,6 +124,7 @@ function AddTask() {
               <div className="inputbox">
                 <textarea
                   type="text"
+                  defaultValue={task.description}
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
@@ -116,6 +136,7 @@ function AddTask() {
               <div className="inputbox">
                 <input
                   type="datetime-local"
+                  value={startdateTime[0] + "T" + startdateTime[1]}
                   onChange={(e) => {
                     setStartDateTime(e.target.value.split("T"));
                   }}
@@ -133,6 +154,7 @@ function AddTask() {
               <div className="inputbox">
                 <input
                   type="datetime-local"
+                  value={enddateTime[0] + "T" + enddateTime[1]}
                   onChange={(e) => {
                     setEndDateTime(e.target.value.split("T"));
                   }}
@@ -163,7 +185,11 @@ function AddTask() {
                   {sections &&
                     sections.map((dep) => {
                       return (
-                        <option key={dep} value={dep}>
+                        <option
+                          selected={dep === department ? true : false}
+                          key={dep}
+                          value={dep}
+                        >
                           {dep}
                         </option>
                       );
@@ -192,11 +218,14 @@ function AddTask() {
                     --
                   </option>
                   {users &&
-                    users.map((employee) => {
+                    users.map((isuser) => {
                       return (
-                        <option key={employee.id} value={employee.name}>
-                          {" "}
-                          {employee.username}
+                        <option
+                          selected={isuser.username === employee ? true : false}
+                          key={isuser.id}
+                          value={isuser.name}
+                        >
+                          {isuser.username}
                         </option>
                       );
                     })}
@@ -210,52 +239,71 @@ function AddTask() {
                 <label htmlFor="">User</label>
               </div>
 
-              <div>
-                {links.map((field) => (
-                  <div className="inputbox" key={field.id}>
-                    <input
-                      type="text"
-                      // value={field.value}
-                      onChange={(e) =>
-                        handleInputChange(field.id, e.target.value)
-                      }
-                    />
-                    <label htmlFor="">Link</label>
-
-                    <div
-                      className="icon-container delete-link"
-                      onClick={() => deleteInputField(field.id)}
-                    >
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        style={{ color: "#fff", zIndex: 100 }}
+              {links &&
+                links.map((link) => {
+                  return (
+                    <div className="inputbox" key={link.id}>
+                      <input
+                        type="text"
+                        defaultValue={link.value}
+                        onChange={(e) => {
+                          handleInputChange(link.id, e.target.value);
+                        }}
+                        required
                       />
-                      <span className="ms-1">Delete</span>
+                      <label className="label_user" htmlFor="">
+                        Link {link.id}
+                      </label>
+
+                      <div
+                        className="icon-container delete-link"
+                        onClick={() => deleteInputField(link.id)}
+                      >
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          style={{ color: "#fff", zIndex: 100 }}
+                        />
+                        <span className="ms-1">Delete</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
+
+              <div className="checkbtndiv">
+                <label htmlFor="">
+                  <input
+                    className="checkbtn"
+                    type="checkbox"
+                    checked={check === "Complete" ? true : false}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setCheck("Complete");
+                      } else {
+                        setCheck("Not Complete");
+                      }
+                    }}
+                  />
+                  Complete Task
+                </label>
               </div>
 
               <div className="btns">
-
                 <button
                   type="button"
                   className="btn-task"
                   onClick={addInputField}
                 >
                   <span>
-                    <FontAwesomeIcon icon={faPlus} fade size="lg" /> Add Link
+                    <FontAwesomeIcon icon={faLink} fade size="lg" /> Add Link
                   </span>
                 </button>
 
                 <button className="btn-task" type="submit">
                   <span>
-                    <FontAwesomeIcon icon={faPlus} fade size="lg" />
-                    &nbsp;Add Task
+                    <FontAwesomeIcon icon={faPenToSquare} fade size="lg" />
+                    &nbsp;Eidt Task
                   </span>
                 </button>
-
-                {/* <button className="btn-task"> */}
 
                 <Link className="btn-task" to={"/task"}>
                   <span>
@@ -264,8 +312,6 @@ function AddTask() {
                     &nbsp;Cancel
                   </span>
                 </Link>
-
-                {/* </button> */}
               </div>
             </form>
           </section>
@@ -274,4 +320,4 @@ function AddTask() {
     </>
   );
 }
-export default AddTask;
+export default EditTask;

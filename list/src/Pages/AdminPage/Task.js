@@ -5,7 +5,7 @@ import {
   faPlus,
   faArrowDownShortWide,
 } from "@fortawesome/free-solid-svg-icons";
-import TaskData from "../components/TaskData";
+import TaskData from "../../components/TaskData";
 import axios from "axios";
 
 function Task() {
