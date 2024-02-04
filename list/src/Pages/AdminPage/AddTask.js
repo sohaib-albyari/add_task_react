@@ -17,6 +17,7 @@ function AddTask() {
   const [sections, setSections] = useState("");
   const [users, setUsers] = useState("");
   const [employee, setEmployee] = useState("");
+
   const [name, setName] = useState("");
   const [check, setCheck] = useState("Not Complete");
   const [department, setDepartment] = useState("");
@@ -25,6 +26,8 @@ function AddTask() {
   const [enddateTime, setEndDateTime] = useState({});
 
   const [links, setLinks] = useState([{ id: 1, value: "" }]);
+
+  const [file, setFile] = useState("");
 
   const addInputField = () => {
     setLinks([...links, { id: links.length + 1, value: "" }]);
@@ -55,6 +58,11 @@ function AddTask() {
   }, []);
 
   const navigate = useNavigate();
+
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -90,6 +98,7 @@ function AddTask() {
           <section>
             <form onSubmit={formSubmit}>
               <h1>Add Task</h1>
+
               <div className="inputbox">
                 <input
                   type="text"
@@ -208,6 +217,13 @@ function AddTask() {
                   />
                 </div>
                 <label htmlFor="">User</label>
+              </div>
+
+              <div className="inputbox">
+                <input type="file" name="file" onChange={handleFile} required />
+                <label className="file-le" htmlFor="">
+                  Image
+                </label>
               </div>
 
               <div>

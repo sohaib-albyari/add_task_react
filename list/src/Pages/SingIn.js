@@ -112,7 +112,8 @@ function SingIn() {
                     required
                   />
                 </div>
-                <div className="OptionsContainer">
+
+                {/* <div className="OptionsContainer">
                   <div className="checkboxContainer">
                     <input
                       type="checkbox"
@@ -125,7 +126,8 @@ function SingIn() {
                     <FontAwesomeIcon icon={faRightToBracket} fade size="lg" />{" "}
                     Registration
                   </Link>
-                </div>
+                </div> */}
+
                 <button className="LoginButton">Log In</button>
               </form>
             </div>

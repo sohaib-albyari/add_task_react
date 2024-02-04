@@ -41,7 +41,7 @@ function Nav() {
             </div>
             <div className="col-2">
               <Link
-                to={"/singin"}
+                to={"/"}
                 onClick={handelSubmit}
                 className="float-start btn btn-warning text-light m-2"
               >

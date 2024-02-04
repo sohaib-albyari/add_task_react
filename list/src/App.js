@@ -4,7 +4,7 @@ import AddTask from "./Pages/AdminPage/AddTask";
 import EditTask from "./Pages/AdminPage/EditTask";
 import FilterTask from "./Pages/AdminPage/FilterTask";
 import { Outlet } from "react-router-dom";
-import Registration from "./Pages/Registration";
+// import Registration from "./Pages/Registration";
 import Task from "./Pages/AdminPage/Task";
 import SingIn from "./Pages/SingIn";
 import Nav from "./components/Nav";
@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Registration />} />
-        <Route path="/singin" element={<SingIn />} />
+        {/* <Route path="/" element={<Registration />} /> */}
+        <Route exact  path="/" element={<SingIn />} />
       </Routes>
       <Nav />
       <Routes>

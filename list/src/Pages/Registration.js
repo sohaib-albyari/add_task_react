@@ -61,7 +61,7 @@ function Registration() {
             showConfirmButton: false,
             timer: 1500,
           });
-          navigate("/singin");
+          navigate("/");
         });
     }
   };
