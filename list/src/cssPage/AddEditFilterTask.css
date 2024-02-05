@@ -61,6 +61,7 @@ select {
 }
 
 input:focus~label,
+input:valid~label,
 textarea:valid~label,
 textarea:focus~label {
   top: -7px;

@@ -14,20 +14,31 @@ import axios from "axios";
 import "../../cssPage/AddEditFilterTask.css";
 
 function AddTask() {
+  const [taskData, setTaskData] = useState({
+    name: "",
+    department: "",
+    employee: "",
+    description: "",
+    check: "",
+    startdateTime: [],
+    enddateTime: [],
+    links: "",
+  });
+
   const [sections, setSections] = useState("");
   const [users, setUsers] = useState("");
-  const [employee, setEmployee] = useState("");
 
-  const [name, setName] = useState("");
-  const [check, setCheck] = useState("Not Complete");
-  const [department, setDepartment] = useState("");
-  const [description, setDescription] = useState("");
-  const [startdateTime, setStartDateTime] = useState({});
-  const [enddateTime, setEndDateTime] = useState({});
+  // const [employee, setEmployee] = useState("");
+  // const [name, setName] = useState("");
+  // const [check, setCheck] = useState("Not Complete");
+  // const [department, setDepartment] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [startdateTime, setStartDateTime] = useState({});
+  // const [enddateTime, setEndDateTime] = useState({});
 
   const [links, setLinks] = useState([{ id: 1, value: "" }]);
 
-  const [file, setFile] = useState("");
+  // const [file, setFile] = useState("");
 
   const addInputField = () => {
     setLinks([...links, { id: links.length + 1, value: "" }]);
@@ -59,30 +70,40 @@ function AddTask() {
 
   const navigate = useNavigate();
 
-  const handleFile = (e) => {
-    setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
+
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    if (name === "startdateTime" || name === "enddateTime") {
+      let time = [];
+      time = value.split("T");
+      setTaskData({ ...taskData, [name]: time });
+    } else {
+      setTaskData({ ...taskData, [name]: value });
+    }
   };
 
   const formSubmit = (e) => {
     e.preventDefault();
-    setCheck("Not Complete");
+    taskData.links = links;
+    taskData.check = "Not Complete";
+
     axios
       .post("http://localhost:8000/task", {
-        name: name,
-        department: department,
-        employee: employee,
-        description: description,
-        check: check,
-        startdateTime: [startdateTime[0], startdateTime[1]],
-        enddateTime: [enddateTime[0], enddateTime[1]],
-        links: links,
+        name: taskData.name,
+        department: taskData.department,
+        employee: taskData.employee,
+        description: taskData.description,
+        check: taskData.check,
+        startdateTime: taskData.startdateTime,
+        enddateTime: taskData.enddateTime,
+        links: taskData.links,
       })
       .then((res) => res)
       .catch((err) => console.log(err));
 
     Swal.fire({
-      title: `Has Added "${name}" successfully.`,
+      title: `Has Added "${taskData.name}" successfully.`,
       icon: "success",
     }).then((data) => {
       if (data.isConfirmed) {
@@ -102,9 +123,11 @@ function AddTask() {
               <div className="inputbox">
                 <input
                   type="text"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
+                  name="name"
+                  // onChange={(e) => {
+                  //   setName(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 />
                 <label htmlFor="">Task Title</label>
@@ -113,9 +136,11 @@ function AddTask() {
               <div className="inputbox">
                 <textarea
                   type="text"
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                  }}
+                  name="description"
+                  // onChange={(e) => {
+                  //   setDescription(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 ></textarea>
                 <label htmlFor="">Task Description</label>
@@ -124,9 +149,11 @@ function AddTask() {
               <div className="inputbox">
                 <input
                   type="datetime-local"
-                  onChange={(e) => {
-                    setStartDateTime(e.target.value.split("T"));
-                  }}
+                  name="startdateTime"
+                  // onChange={(e) => {
+                  //   setStartDateTime(e.target.value.split("T"));
+                  // }}
+                  onChange={handleInput}
                   required
                 />
                 <div className="icon-container">
@@ -141,9 +168,11 @@ function AddTask() {
               <div className="inputbox">
                 <input
                   type="datetime-local"
-                  onChange={(e) => {
-                    setEndDateTime(e.target.value.split("T"));
-                  }}
+                  name="enddateTime"
+                  // onChange={(e) => {
+                  //   setEndDateTime(e.target.value.split("T"));
+                  // }}
+                  onChange={handleInput}
                   required
                 />
                 <div className="icon-container">
@@ -157,21 +186,22 @@ function AddTask() {
 
               <div className="inputbox">
                 <select
-                  name="selectedDepartment"
+                  name="department"
                   className="form-select"
                   id="validationCustom04"
-                  onChange={(e) => {
-                    setDepartment(e.target.value);
-                  }}
+                  // onChange={(e) => {
+                  //   setDepartment(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 >
                   <option disabled selected value="-">
                     --
                   </option>
                   {sections &&
-                    sections.map((dep) => {
+                    sections.map((dep, i) => {
                       return (
-                        <option key={dep} value={dep}>
+                        <option key={i} value={dep}>
                           {dep}
                         </option>
                       );
@@ -188,12 +218,13 @@ function AddTask() {
 
               <div className="inputbox">
                 <select
-                  name="selectedDepartment"
+                  name="employee"
                   className="form-select"
                   id="validationCustom04"
-                  onChange={(e) => {
-                    setEmployee(e.target.value);
-                  }}
+                  // onChange={(e) => {
+                  //   setEmployee(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 >
                   <option disabled selected value="-">
@@ -201,7 +232,7 @@ function AddTask() {
                   </option>
                   {users &&
                     users.map((employee) => {
-                      if (employee.department === department) {
+                      if (employee.department === taskData.department) {
                         return (
                           <option key={employee.id} value={employee.name}>
                             {employee.username}
@@ -219,22 +250,24 @@ function AddTask() {
                 <label htmlFor="">User</label>
               </div>
 
-              <div className="inputbox">
+              {/* <div className="inputbox">
                 <input type="file" name="file" onChange={handleFile} required />
                 <label className="file-le" htmlFor="">
                   Image
                 </label>
-              </div>
+              </div> */}
 
-              <div>
+              <>
                 {links.map((field) => (
                   <div className="inputbox" key={field.id}>
                     <input
                       type="text"
-                      // value={field.value}
-                      onChange={(e) =>
-                        handleInputChange(field.id, e.target.value)
-                      }
+                      name="links"
+                      value={field.value}
+                      onChange={(e) => {
+                        handleInputChange(field.id, e.target.value);
+                      }}
+                      // onChange={handleInput}
                     />
                     <label htmlFor="">Link</label>
 
@@ -250,7 +283,7 @@ function AddTask() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </>
 
               <div className="btns">
                 <button
