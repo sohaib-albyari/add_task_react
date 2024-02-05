@@ -8,6 +8,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BottomBtn from "../../components/BottomBtn";
 
 function AddUser() {
   const [depatments, setDepartments] = useState("");
@@ -21,9 +22,11 @@ function AddUser() {
   useEffect(() => {
     axios
       .get("http://localhost:8000/depatments")
-      .then((res) => setDepartments(res.data))
+      .then((res) => {
+        setDepartments(res.data);
+      })
       .catch((err) => console.log(err));
-  });
+  },[]);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -108,8 +111,8 @@ function AddUser() {
                   {depatments &&
                     depatments.map((dep) => {
                       return (
-                        <option key={dep} value={dep}>
-                          {dep}
+                        <option key={dep.id} value={dep.department}>
+                          {dep.department}
                         </option>
                       );
                     })}
@@ -124,7 +127,8 @@ function AddUser() {
               </div>
 
               <div className="btns">
-                <button className="btn-task" type="submit">
+              <BottomBtn to={"/task"} value={"Add User"} />
+                {/* <button className="btn-task" type="submit">
                   <span>
                     <FontAwesomeIcon icon={faPlus} fade size="lg" />
                     &nbsp;Add User
@@ -136,7 +140,8 @@ function AddUser() {
                     <FontAwesomeIcon icon={faXmark} fade size="lg" />
                     &nbsp;Cancel
                   </span>
-                </Link>
+                </Link> */}
+
               </div>
             </form>
           </section>

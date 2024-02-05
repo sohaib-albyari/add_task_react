@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faXmark,
-  faPenToSquare,
+  // faXmark,
+  // faPenToSquare,
   faCalendarDays,
   faCaretDown,
   faTrash,
@@ -11,19 +11,33 @@ import {
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import BottomBtn from "../../components/BottomBtn";
 
 function EditTask() {
-  const [task, setTask] = useState({});
+  // const [task, setTask] = useState({});
   const [sections, setSections] = useState("");
   const [users, setUsers] = useState("");
 
-  const [name, setName] = useState("");
+  const [taskData, setTaskData] = useState({
+    name: "",
+    department: "",
+    employee: "",
+    description: "",
+    check: "",
+    startdateTime: [],
+    enddateTime: [],
+    links: "",
+  });
+
   const [check, setCheck] = useState("Not Complete");
-  const [department, setDepartment] = useState("");
-  const [employee, setEmployee] = useState("");
-  const [description, setDescription] = useState("");
-  const [startdateTime, setStartDateTime] = useState({});
-  const [enddateTime, setEndDateTime] = useState({});
+
+
+  // const [name, setName] = useState("");
+  // const [department, setDepartment] = useState("");
+  // const [employee, setEmployee] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [startdateTime, setStartDateTime] = useState({});
+  // const [enddateTime, setEndDateTime] = useState({});
 
   const [links, setLinks] = useState([{ id: 1, value: "" }]);
 
@@ -63,37 +77,60 @@ function EditTask() {
     axios
       .get(`http://localhost:8000/task/${taskid}`)
       .then((res) => {
-        setTask(res.data);
-        setName(res.data.name);
-        setCheck(res.data.check);
-        setDepartment(res.data.department);
-        setEmployee(res.data.employee);
-        setDescription(res.data.description);
-        setStartDateTime(res.data.startdateTime);
-        setEndDateTime(res.data.enddateTime);
-        setLinks(res.data.links);
+        taskData.name = res.data.name;
+        taskData.department = res.data.department;
+        taskData.employee = res.data.employee;
+        taskData.description = res.data.description;
+        taskData.startdateTime = res.data.startdateTime;
+        taskData.enddateTime = res.data.enddateTime;
+        setLinks(res.data.links)
+        // taskData.links = res.data.links;
+        taskData.check = res.data.check;
+
+        // setTask(res.data);
+        // setName(res.data.name);
+        // setCheck(res.data.check);
+        // setDepartment(res.data.department);
+        // setEmployee(res.data.employee);
+        // setDescription(res.data.description);
+        // setStartDateTime(res.data.startdateTime);
+        // setEndDateTime(res.data.enddateTime);
+        // setLinks(res.data.links);
       })
       .catch((err) => console.log(err));
   }, [taskid]);
 
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    if (name === "startdateTime" || name === "enddateTime") {
+      let time = [];
+      time = value.split("T");
+      setTaskData({ ...taskData, [name]: time });
+    } else {
+      setTaskData({ ...taskData, [name]: value });
+    }
+  };
+
   const formSubmit = (e) => {
     e.preventDefault();
+    taskData.links = links;
+    taskData.check = check;
     axios
       .put(`http://localhost:8000/task/${taskid}`, {
-        name,
-        department,
-        employee,
-        description,
-        check,
-        startdateTime,
-        enddateTime,
-        links,
+        name: taskData.name,
+        department: taskData.department,
+        employee: taskData.employee,
+        description: taskData.description,
+        check: taskData.check,
+        startdateTime: taskData.startdateTime,
+        enddateTime: taskData.enddateTime,
+        links: taskData.links,
       })
-      .then((res) => setTask(res.data))
+      .then((res) => res.data)
       .catch((err) => console.log(err));
 
     Swal.fire({
-      title: `Has updated "${task.name}" successfully.`,
+      title: `Has updated "${taskData.name}" successfully.`,
       icon: "success",
     }).then((data) => {
       if (data.isConfirmed) {
@@ -112,10 +149,12 @@ function EditTask() {
               <div className="inputbox">
                 <input
                   type="text"
-                  defaultValue={task.name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
+                  name="name"
+                  defaultValue={taskData.name}
+                  // onChange={(e) => {
+                  //   setName(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 />
                 <label htmlFor="">Task Title</label>
@@ -124,10 +163,12 @@ function EditTask() {
               <div className="inputbox">
                 <textarea
                   type="text"
-                  defaultValue={task.description}
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                  }}
+                  name="description"
+                  defaultValue={taskData.description}
+                  // onChange={(e) => {
+                  //   setDescription(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 ></textarea>
                 <label htmlFor="">Task Description</label>
@@ -136,10 +177,14 @@ function EditTask() {
               <div className="inputbox">
                 <input
                   type="datetime-local"
-                  value={startdateTime[0] + "T" + startdateTime[1]}
-                  onChange={(e) => {
-                    setStartDateTime(e.target.value.split("T"));
-                  }}
+                  name="startdateTime"
+                  value={
+                    taskData.startdateTime[0] + "T" + taskData.startdateTime[1]
+                  }
+                  // onChange={(e) => {
+                  //   setStartDateTime(e.target.value.split("T"));
+                  // }}
+                  onChange={handleInput}
                   required
                 />
                 <div className="icon-container">
@@ -154,10 +199,14 @@ function EditTask() {
               <div className="inputbox">
                 <input
                   type="datetime-local"
-                  value={enddateTime[0] + "T" + enddateTime[1]}
-                  onChange={(e) => {
-                    setEndDateTime(e.target.value.split("T"));
-                  }}
+                  name="enddateTime"
+                  value={
+                    taskData.enddateTime[0] + "T" + taskData.enddateTime[1]
+                  }
+                  // onChange={(e) => {
+                  //   setEndDateTime(e.target.value.split("T"));
+                  // }}
+                  onChange={handleInput}
                   required
                 />
                 <div className="icon-container">
@@ -171,12 +220,13 @@ function EditTask() {
 
               <div className="inputbox">
                 <select
-                  name="selectedDepartment"
+                  name="department"
                   className="form-select"
                   id="validationCustom04"
-                  onChange={(e) => {
-                    setDepartment(e.target.value);
-                  }}
+                  // onChange={(e) => {
+                  //   setDepartment(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 >
                   <option disabled selected value="-">
@@ -186,11 +236,15 @@ function EditTask() {
                     sections.map((dep) => {
                       return (
                         <option
-                          selected={dep === department ? true : false}
-                          key={dep}
-                          value={dep}
+                          selected={
+                            dep.department === taskData.department
+                              ? true
+                              : false
+                          }
+                          key={dep.id}
+                          value={dep.department}
                         >
-                          {dep}
+                          {dep.department}
                         </option>
                       );
                     })}
@@ -206,12 +260,13 @@ function EditTask() {
 
               <div className="inputbox">
                 <select
-                  name="selectedDepartment"
+                  name="employee"
                   className="form-select"
                   id="validationCustom04"
-                  onChange={(e) => {
-                    setEmployee(e.target.value);
-                  }}
+                  // onChange={(e) => {
+                  //   setEmployee(e.target.value);
+                  // }}
+                  onChange={handleInput}
                   required
                 >
                   <option disabled selected value="-">
@@ -219,15 +274,21 @@ function EditTask() {
                   </option>
                   {users &&
                     users.map((isuser) => {
-                      return (
-                        <option
-                          selected={isuser.username === employee ? true : false}
-                          key={isuser.id}
-                          value={isuser.name}
-                        >
-                          {isuser.username}
-                        </option>
-                      );
+                      if (taskData.department === isuser.department) {
+                        return (
+                          <option
+                            selected={
+                              isuser.username === taskData.employee
+                                ? true
+                                : false
+                            }
+                            key={isuser.id}
+                            value={isuser.name}
+                          >
+                            {isuser.username}
+                          </option>
+                        );
+                      }
                     })}
                 </select>
                 <div className="icon-container">
@@ -273,8 +334,10 @@ function EditTask() {
                 <label htmlFor="">
                   <input
                     className="checkbtn"
+                    name="check"
                     type="checkbox"
-                    checked={check === "Complete" ? true : false}
+                    checked={taskData.check === "Complete" ? true : false}
+                    // value={taskData.check}
                     onChange={(e) => {
                       if (e.target.checked) {
                         setCheck("Complete");
@@ -282,6 +345,7 @@ function EditTask() {
                         setCheck("Not Complete");
                       }
                     }}
+                    // onChange={handleInput}
                   />
                   Complete Task
                 </label>
@@ -298,7 +362,9 @@ function EditTask() {
                   </span>
                 </button>
 
-                <button className="btn-task" type="submit">
+                <BottomBtn to={"/task"} value={"Eidt Task"} />
+
+                {/* <button className="btn-task" type="submit">
                   <span>
                     <FontAwesomeIcon icon={faPenToSquare} fade size="lg" />
                     &nbsp;Eidt Task
@@ -311,7 +377,7 @@ function EditTask() {
                     <FontAwesomeIcon icon={faXmark} fade size="lg" />
                     &nbsp;Cancel
                   </span>
-                </Link>
+                </Link> */}
               </div>
             </form>
           </section>

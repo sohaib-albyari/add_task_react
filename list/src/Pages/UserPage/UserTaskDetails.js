@@ -69,7 +69,6 @@ function TaskUserDetails() {
 
               {taskDetails.links &&
                 taskDetails.links.map((link) => {
-                  console.log(link.value);
                   return (
                     <div className="inputbox" key={link.id}>
                       <Link to={link.value} target="_blank">

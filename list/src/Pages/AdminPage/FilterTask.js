@@ -65,8 +65,8 @@ function FilterTask() {
                         {sections &&
                           sections.map((dep) => {
                             return (
-                              <option key={dep} value={dep}>
-                                {dep}
+                              <option key={dep.id} value={dep.department}>
+                                {dep.department}
                               </option>
                             );
                           })}

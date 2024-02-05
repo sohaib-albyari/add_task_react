@@ -12,6 +12,7 @@ import {
 import Swal from "sweetalert2";
 import axios from "axios";
 import "../../cssPage/AddEditFilterTask.css";
+import BottomBtn from "../../components/BottomBtn";
 
 function AddTask() {
   const [taskData, setTaskData] = useState({
@@ -69,8 +70,6 @@ function AddTask() {
   }, []);
 
   const navigate = useNavigate();
-
-
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -199,10 +198,10 @@ function AddTask() {
                     --
                   </option>
                   {sections &&
-                    sections.map((dep, i) => {
+                    sections.map((dep) => {
                       return (
-                        <option key={i} value={dep}>
-                          {dep}
+                        <option key={dep.id} value={dep.department}>
+                          {dep.department}
                         </option>
                       );
                     })}
@@ -295,15 +294,15 @@ function AddTask() {
                     <FontAwesomeIcon icon={faLink} fade size="lg" /> Add Link
                   </span>
                 </button>
+                <BottomBtn to={"/task"} value={"Add Task"} />
 
-                <button className="btn-task" type="submit">
+                {/* <button className="btn-task" type="submit">
                   <span>
                     <FontAwesomeIcon icon={faPlus} fade size="lg" />
                     &nbsp;Add Task
                   </span>
                 </button>
 
-                {/* <button className="btn-task"> */}
 
                 <Link className="btn-task" to={"/task"}>
                   <span>
@@ -311,9 +310,7 @@ function AddTask() {
                     <FontAwesomeIcon icon={faXmark} fade size="lg" />
                     &nbsp;Cancel
                   </span>
-                </Link>
-
-                {/* </button> */}
+                </Link> */}
               </div>
             </form>
           </section>
