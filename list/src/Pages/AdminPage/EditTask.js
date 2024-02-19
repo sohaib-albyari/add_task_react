@@ -63,7 +63,7 @@ function EditTask() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/depatments")
+      .get("http://localhost:8000/departments")
       .then((res) => setSections(res.data))
       .catch((err) => console.log(err));
 

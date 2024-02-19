@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 import BottomBtn from "../../components/BottomBtn";
 
 function AddUser() {
-  const [depatments, setDepartments] = useState("");
+  const [departments, setDepartments] = useState("");
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -21,7 +21,7 @@ function AddUser() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/depatments")
+      .get("http://localhost:8000/departments")
       .then((res) => {
         setDepartments(res.data);
       })
@@ -108,8 +108,8 @@ function AddUser() {
                   <option disabled selected value="-">
                     --
                   </option>
-                  {depatments &&
-                    depatments.map((dep) => {
+                  {departments &&
+                    departments.map((dep) => {
                       return (
                         <option key={dep.id} value={dep.department}>
                           {dep.department}

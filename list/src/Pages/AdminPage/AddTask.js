@@ -83,7 +83,7 @@ function AddTask() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/depatments")
+      .get("http://localhost:8000/departments")
       .then((res) => setSections(res.data))
       .catch((err) => console.log(err));
 
@@ -214,7 +214,7 @@ function AddTask() {
                   onBlur={handleBlur}
                   // required
                 >
-                  <option disabled selected value="-">
+                  <option selected value="-">
                     --
                   </option>
                   {sections &&
