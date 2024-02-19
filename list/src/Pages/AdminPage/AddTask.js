@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faXmark,
-  faPlus,
+  // Link,
+  useNavigate,
+} from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useFormik } from "formik";
+import {
+  // faXmark,
+  // faPlus,
   faCaretDown,
   faCalendarDays,
   faTrash,
@@ -13,8 +17,28 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import "../../cssPage/AddEditFilterTask.css";
 import BottomBtn from "../../components/BottomBtn";
+import { basicSchema } from "../../schemas/Validations";
 
 function AddTask() {
+  const formSubmit = (e) => {
+    e.preventDefault();
+    console.log(values);
+  };
+  const { values, handleBlur, handleChange, handleSubmit,errors } = useFormik({
+    initialValues: {
+      name: "",
+      department: "",
+      employee: "",
+      description: "",
+      check: "",
+      startdateTime: [],
+      enddateTime: [],
+      links: "",
+    },
+    validationSchema: basicSchema,
+    formSubmit,
+  });
+
   const [taskData, setTaskData] = useState({
     name: "",
     department: "",
@@ -82,65 +106,64 @@ function AddTask() {
     }
   };
 
-  const formSubmit = (e) => {
-    e.preventDefault();
-    taskData.links = links;
-    taskData.check = "Not Complete";
+  // const formSubmit = (e) => {
+  //   e.preventDefault();
+  //   taskData.links = links;
+  //   taskData.check = "Not Complete";
 
-    axios
-      .post("http://localhost:8000/task", {
-        name: taskData.name,
-        department: taskData.department,
-        employee: taskData.employee,
-        description: taskData.description,
-        check: taskData.check,
-        startdateTime: taskData.startdateTime,
-        enddateTime: taskData.enddateTime,
-        links: taskData.links,
-      })
-      .then((res) => res)
-      .catch((err) => console.log(err));
+  //   axios
+  //     .post("http://localhost:8000/task", {
+  //       name: taskData.name,
+  //       department: taskData.department,
+  //       employee: taskData.employee,
+  //       description: taskData.description,
+  //       check: taskData.check,
+  //       startdateTime: taskData.startdateTime,
+  //       enddateTime: taskData.enddateTime,
+  //       links: taskData.links,
+  //     })
+  //     .then((res) => res)
+  //     .catch((err) => console.log(err));
 
-    Swal.fire({
-      title: `Has Added "${taskData.name}" successfully.`,
-      icon: "success",
-    }).then((data) => {
-      if (data.isConfirmed) {
-        navigate("/task");
-      }
-    });
-  };
+  //   Swal.fire({
+  //     title: `Has Added "${taskData.name}" successfully.`,
+  //     icon: "success",
+  //   }).then((data) => {
+  //     if (data.isConfirmed) {
+  //       navigate("/task");
+  //     }
+  //   });
+  // };
 
   return (
     <>
       <div className="container-fluid p-0">
         <div className="add-page">
           <section>
-            <form onSubmit={formSubmit}>
+            <form onSubmit={handleSubmit}>
               <h1>Add Task</h1>
 
               <div className="inputbox">
                 <input
                   type="text"
                   name="name"
-                  // onChange={(e) => {
-                  //   setName(e.target.value);
-                  // }}
-                  onChange={handleInput}
-                  required
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // required
                 />
                 <label htmlFor="">Task Title</label>
+                
               </div>
 
               <div className="inputbox">
                 <textarea
                   type="text"
                   name="description"
-                  // onChange={(e) => {
-                  //   setDescription(e.target.value);
-                  // }}
-                  onChange={handleInput}
-                  required
+                  value={values.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // required
                 ></textarea>
                 <label htmlFor="">Task Description</label>
               </div>
@@ -149,11 +172,10 @@ function AddTask() {
                 <input
                   type="datetime-local"
                   name="startdateTime"
-                  // onChange={(e) => {
-                  //   setStartDateTime(e.target.value.split("T"));
-                  // }}
-                  onChange={handleInput}
-                  required
+                  value={values.startdateTime}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // required
                 />
                 <div className="icon-container">
                   <FontAwesomeIcon
@@ -168,11 +190,10 @@ function AddTask() {
                 <input
                   type="datetime-local"
                   name="enddateTime"
-                  // onChange={(e) => {
-                  //   setEndDateTime(e.target.value.split("T"));
-                  // }}
-                  onChange={handleInput}
-                  required
+                  value={values.enddateTime}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // required
                 />
                 <div className="icon-container">
                   <FontAwesomeIcon
@@ -188,11 +209,10 @@ function AddTask() {
                   name="department"
                   className="form-select"
                   id="validationCustom04"
-                  // onChange={(e) => {
-                  //   setDepartment(e.target.value);
-                  // }}
-                  onChange={handleInput}
-                  required
+                  value={values.department}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // required
                 >
                   <option disabled selected value="-">
                     --
@@ -220,11 +240,10 @@ function AddTask() {
                   name="employee"
                   className="form-select"
                   id="validationCustom04"
-                  // onChange={(e) => {
-                  //   setEmployee(e.target.value);
-                  // }}
-                  onChange={handleInput}
-                  required
+                  value={values.employee}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  // required
                 >
                   <option disabled selected value="-">
                     --
@@ -262,11 +281,13 @@ function AddTask() {
                     <input
                       type="text"
                       name="links"
-                      value={field.value}
+                      // value={field.value}
                       onChange={(e) => {
                         handleInputChange(field.id, e.target.value);
                       }}
-                      // onChange={handleInput}
+                      value={values.links}
+                      // onChange={handleChange}
+                      onBlur={handleBlur}
                     />
                     <label htmlFor="">Link</label>
 
@@ -317,6 +338,210 @@ function AddTask() {
         </div>
       </div>
     </>
+    // <>
+    //   <div className="container-fluid p-0">
+    //     <div className="add-page">
+    //       <section>
+    //         <form onSubmit={formSubmit}>
+    //           <h1>Add Task</h1>
+
+    //           <div className="inputbox">
+    //             <input
+    //               type="text"
+    //               name="name"
+    //               // onChange={(e) => {
+    //               //   setName(e.target.value);
+    //               // }}
+    //               onChange={handleInput}
+    //               required
+    //             />
+    //             <label htmlFor="">Task Title</label>
+    //           </div>
+
+    //           <div className="inputbox">
+    //             <textarea
+    //               type="text"
+    //               name="description"
+    //               // onChange={(e) => {
+    //               //   setDescription(e.target.value);
+    //               // }}
+    //               onChange={handleInput}
+    //               required
+    //             ></textarea>
+    //             <label htmlFor="">Task Description</label>
+    //           </div>
+
+    //           <div className="inputbox">
+    //             <input
+    //               type="datetime-local"
+    //               name="startdateTime"
+    //               // onChange={(e) => {
+    //               //   setStartDateTime(e.target.value.split("T"));
+    //               // }}
+    //               onChange={handleInput}
+    //               required
+    //             />
+    //             <div className="icon-container">
+    //               <FontAwesomeIcon
+    //                 icon={faCalendarDays}
+    //                 style={{ color: "#fff" }}
+    //               />
+    //             </div>
+    //             <label htmlFor="">Start Task Date</label>
+    //           </div>
+
+    //           <div className="inputbox">
+    //             <input
+    //               type="datetime-local"
+    //               name="enddateTime"
+    //               // onChange={(e) => {
+    //               //   setEndDateTime(e.target.value.split("T"));
+    //               // }}
+    //               onChange={handleInput}
+    //               required
+    //             />
+    //             <div className="icon-container">
+    //               <FontAwesomeIcon
+    //                 icon={faCalendarDays}
+    //                 style={{ color: "#fff" }}
+    //               />
+    //             </div>
+    //             <label htmlFor="">End Task Date</label>
+    //           </div>
+
+    //           <div className="inputbox">
+    //             <select
+    //               name="department"
+    //               className="form-select"
+    //               id="validationCustom04"
+    //               // onChange={(e) => {
+    //               //   setDepartment(e.target.value);
+    //               // }}
+    //               onChange={handleInput}
+    //               required
+    //             >
+    //               <option disabled selected value="-">
+    //                 --
+    //               </option>
+    //               {sections &&
+    //                 sections.map((dep) => {
+    //                   return (
+    //                     <option key={dep.id} value={dep.department}>
+    //                       {dep.department}
+    //                     </option>
+    //                   );
+    //                 })}
+    //             </select>
+    //             <div className="icon-container">
+    //               <FontAwesomeIcon
+    //                 icon={faCaretDown}
+    //                 style={{ color: "#fff" }}
+    //               />
+    //             </div>
+    //             <label htmlFor="">Department</label>
+    //           </div>
+
+    //           <div className="inputbox">
+    //             <select
+    //               name="employee"
+    //               className="form-select"
+    //               id="validationCustom04"
+    //               // onChange={(e) => {
+    //               //   setEmployee(e.target.value);
+    //               // }}
+    //               onChange={handleInput}
+    //               required
+    //             >
+    //               <option disabled selected value="-">
+    //                 --
+    //               </option>
+    //               {users &&
+    //                 users.map((employee) => {
+    //                   if (employee.department === taskData.department) {
+    //                     return (
+    //                       <option key={employee.id} value={employee.name}>
+    //                         {employee.username}
+    //                       </option>
+    //                     );
+    //                   }
+    //                 })}
+    //             </select>
+    //             <div className="icon-container">
+    //               <FontAwesomeIcon
+    //                 icon={faCaretDown}
+    //                 style={{ color: "#fff" }}
+    //               />
+    //             </div>
+    //             <label htmlFor="">User</label>
+    //           </div>
+
+    //           {/* <div className="inputbox">
+    //             <input type="file" name="file" onChange={handleFile} required />
+    //             <label className="file-le" htmlFor="">
+    //               Image
+    //             </label>
+    //           </div> */}
+
+    //           <>
+    //             {links.map((field) => (
+    //               <div className="inputbox" key={field.id}>
+    //                 <input
+    //                   type="text"
+    //                   name="links"
+    //                   value={field.value}
+    //                   onChange={(e) => {
+    //                     handleInputChange(field.id, e.target.value);
+    //                   }}
+    //                   // onChange={handleInput}
+    //                 />
+    //                 <label htmlFor="">Link</label>
+
+    //                 <div
+    //                   className="icon-container delete-link"
+    //                   onClick={() => deleteInputField(field.id)}
+    //                 >
+    //                   <FontAwesomeIcon
+    //                     icon={faTrash}
+    //                     style={{ color: "#fff", zIndex: 100 }}
+    //                   />
+    //                   <span className="ms-1">Delete</span>
+    //                 </div>
+    //               </div>
+    //             ))}
+    //           </>
+
+    //           <div className="btns">
+    //             <button
+    //               type="button"
+    //               className="btn-task"
+    //               onClick={addInputField}
+    //             >
+    //               <span>
+    //                 <FontAwesomeIcon icon={faLink} fade size="lg" /> Add Link
+    //               </span>
+    //             </button>
+    //             <BottomBtn to={"/task"} value={"Add Task"} />
+
+    //             {/* <button className="btn-task" type="submit">
+    //               <span>
+    //                 <FontAwesomeIcon icon={faPlus} fade size="lg" />
+    //                 &nbsp;Add Task
+    //               </span>
+    //             </button>
+
+    //             <Link className="btn-task" to={"/task"}>
+    //               <span>
+    //                 {" "}
+    //                 <FontAwesomeIcon icon={faXmark} fade size="lg" />
+    //                 &nbsp;Cancel
+    //               </span>
+    //             </Link> */}
+    //           </div>
+    //         </form>
+    //       </section>
+    //     </div>
+    //   </div>
+    // </>
   );
 }
 export default AddTask;

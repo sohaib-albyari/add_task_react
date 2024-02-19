@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BottomBtn from "../../components/BottomBtn";
 
 function AddDepartment() {
   const [department, setDepartment] = useState("");
@@ -54,7 +55,11 @@ function AddDepartment() {
               </div>
 
               <div className="btns">
-                <button className="btn-task" type="submit">
+
+
+              <BottomBtn to={"/task"} value={"Add Department"} />
+
+                {/* <button className="btn-task" type="submit">
                   <span>
                     <FontAwesomeIcon icon={faPlus} fade size="lg" />
                     &nbsp;Add Department
@@ -66,7 +71,8 @@ function AddDepartment() {
                     <FontAwesomeIcon icon={faXmark} fade size="lg" />
                     &nbsp;Cancel
                   </span>
-                </Link>
+                </Link> */}
+
               </div>
             </form>
           </section>
