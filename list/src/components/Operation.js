@@ -45,8 +45,6 @@ function Operation({ setTasks, task, tasks }) {
           className="btn btn-danger btn-sm ms-2"
           onClick={() => {
             deleteTask(task.id);
-            // getAllTasks(tasks);
-            navigate("/task");
           }}
         >
           <FontAwesomeIcon icon={faTrash} beat size="lg" />

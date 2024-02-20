@@ -12,6 +12,7 @@ import BottomBtn from "../../components/BottomBtn";
 
 function AddUser() {
   const [departments, setDepartments] = useState("");
+  const [users, setUsers] = useState("");
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -26,11 +27,17 @@ function AddUser() {
         setDepartments(res.data);
       })
       .catch((err) => console.log(err));
-  },[]);
+
+    axios
+      .get("http://localhost:8000/user")
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    console.log(name + ": " + value);
     setUserData({ ...userData, [name]: value });
   };
 
@@ -38,25 +45,40 @@ function AddUser() {
 
   const formSubmit = (e) => {
     e.preventDefault();
+    let isExists = 0;
+    users &&
+      users.map((user) => {
+        if (user.email === userData.email) {
+          isExists++;
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Employee already exists!`,
+          });
+        }
+        return isExists;
+      });
 
-    axios
-      .post("http://localhost:8000/user", {
-        username: userData.username,
-        email: userData.email,
-        password: userData.password,
-        depatment: userData.depatment,
-      })
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+    if (isExists === 0) {
+      axios
+        .post("http://localhost:8000/user", {
+          username: userData.username,
+          email: userData.email,
+          password: userData.password,
+          depatment: userData.depatment,
+        })
+        .then((res) => res.data)
+        .catch((err) => console.log(err));
 
-    Swal.fire({
-      title: `Has Added "${userData.username}" successfully.`,
-      icon: "success",
-    }).then((data) => {
-      if (data.isConfirmed) {
-        navigate("/task");
-      }
-    });
+      Swal.fire({
+        title: `Has Added "${userData.username}" successfully.`,
+        icon: "success",
+      }).then((data) => {
+        if (data.isConfirmed) {
+          navigate("/task");
+        }
+      });
+    }
   };
 
   return (
@@ -127,7 +149,7 @@ function AddUser() {
               </div>
 
               <div className="btns">
-              <BottomBtn to={"/task"} value={"Add User"} />
+                <BottomBtn to={"/task"} value={"Add User"} />
                 {/* <button className="btn-task" type="submit">
                   <span>
                     <FontAwesomeIcon icon={faPlus} fade size="lg" />
@@ -141,7 +163,6 @@ function AddUser() {
                     &nbsp;Cancel
                   </span>
                 </Link> */}
-
               </div>
             </form>
           </section>
