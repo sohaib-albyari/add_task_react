@@ -22,9 +22,8 @@ import { basicSchema } from "../../schemas/Validations";
 function AddTask() {
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
   };
-  const { values, handleBlur, handleChange, handleSubmit,errors } = useFormik({
+  const { values, handleBlur, handleChange, handleSubmit, errors } = useFormik({
     initialValues: {
       name: "",
       department: "",
@@ -148,12 +147,11 @@ function AddTask() {
                   type="text"
                   name="name"
                   value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // required
+                  onChange={handleInput}
+                  // onBlur={handleBlur}
+                  required
                 />
                 <label htmlFor="">Task Title</label>
-                
               </div>
 
               <div className="inputbox">
@@ -161,9 +159,9 @@ function AddTask() {
                   type="text"
                   name="description"
                   value={values.description}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // required
+                  onChange={handleInput}
+                  // onBlur={handleBlur}
+                  required
                 ></textarea>
                 <label htmlFor="">Task Description</label>
               </div>
@@ -173,9 +171,9 @@ function AddTask() {
                   type="datetime-local"
                   name="startdateTime"
                   value={values.startdateTime}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // required
+                  onChange={handleInput}
+                  // onBlur={handleBlur}
+                  required
                 />
                 <div className="icon-container">
                   <FontAwesomeIcon
@@ -191,9 +189,9 @@ function AddTask() {
                   type="datetime-local"
                   name="enddateTime"
                   value={values.enddateTime}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // required
+                  onChange={handleInput}
+                  // onBlur={handleBlur}
+                  required
                 />
                 <div className="icon-container">
                   <FontAwesomeIcon
@@ -209,10 +207,9 @@ function AddTask() {
                   name="department"
                   className="form-select"
                   id="validationCustom04"
-                  value={values.department}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // required
+                  onChange={handleInput}
+                  // onBlur={handleBlur}
+                  required
                 >
                   <option selected value="-">
                     --
@@ -240,12 +237,11 @@ function AddTask() {
                   name="employee"
                   className="form-select"
                   id="validationCustom04"
-                  value={values.employee}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  // required
+                  onChange={handleInput}
+                  // onBlur={handleBlur}
+                  required
                 >
-                  <option disabled selected value="-">
+                  <option selected value="-">
                     --
                   </option>
                   {users &&
@@ -287,7 +283,8 @@ function AddTask() {
                       }}
                       value={values.links}
                       // onChange={handleChange}
-                      onBlur={handleBlur}
+                      // onBlur={handleBlur}
+                      required
                     />
                     <label htmlFor="">Link</label>
 
