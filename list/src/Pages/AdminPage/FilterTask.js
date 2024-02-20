@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import TaskData from "../../components/TaskData";
 import axios from "axios";
+import Taskhead from "../../components/Taskhead";
 
 function FilterTask() {
   const [tasks, setTasks] = useState("");
@@ -154,16 +155,7 @@ function FilterTask() {
                     <div className="table-responsive">
                       <table className="table text-white mb-0">
                         <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Department</th>
-                            <th>Employee</th>
-                            <th>Title</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Complete</th>
-                            <th>Operation</th>
-                          </tr>
+                          <Taskhead/>
                         </thead>
                         <tbody>
                           {tasks &&

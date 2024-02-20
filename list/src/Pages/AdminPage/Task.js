@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TaskData from "../../components/TaskData";
 import axios from "axios";
+import Taskhead from "../../components/Taskhead";
 
 function Task() {
   const [tasks, setTasks] = useState([]);
@@ -57,18 +58,7 @@ function Task() {
                   <div className="card-body">
                     <div className="table-responsive">
                       <table className="table text-white mb-0">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Department</th>
-                            <th>Employee</th>
-                            <th>Title</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Complete</th>
-                            <th>Operation</th>
-                          </tr>
-                        </thead>
+                        <Taskhead />
                         <tbody>
                           {tasks &&
                             tasks.map((task) => {
