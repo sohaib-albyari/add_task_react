@@ -255,3 +255,20 @@ select~label {
   color: rgba(255, 255, 255, 0.404) !important;
   transition: all 0.5s ease-in-out;
 }
+
+@media screen and (max-width: 527px) {
+  .btns{
+    width: 75% !important;
+  }
+  .btn-task:after{
+    left: 30%;
+  }
+}
+@media screen and (max-width: 397px) {
+  .btns{
+    width: 77% !important;
+  }
+  .btn-task:after{
+    left: 10%;
+  }
+}

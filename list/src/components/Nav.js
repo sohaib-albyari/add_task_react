@@ -25,25 +25,25 @@ function Nav() {
     <>
       <nav
         className="navbar"
-        style={{ display: userName === "" ? "none" : "flex" }}
+        // style={{ display: userName === "" ? "none" : "flex" }}
       >
         <div className="container-fluid">
           <div className="row nav-item">
-            <div className="col-2">
+            <div className="col-3 nav-brand">
               <Link to={"/task"} className="navbar-brand">
                 <img className="float-start w-25" src={logo} alt="0" />
               </Link>
             </div>
-            <div className="welcomeMsg col-3">
+            <div className="welcomeMsg col-6">
               <h1 className="float-end text-white-50 text-center m-auto">
                 Welcome {userName}
               </h1>
             </div>
-            <div className="col-2">
+            <div className="col-3 log-btn">
               <Link
                 to={"/"}
                 onClick={handelSubmit}
-                className="float-start btn btn-warning text-light m-2"
+                className="w-50 btn btn-warning text-light"
               >
                 <FontAwesomeIcon
                   icon={faRightFromBracket}

@@ -8,14 +8,22 @@
 }
 
 .navbar {
-  background-image: linear-gradient(to right bottom, #381054, #273e80, #0066a1, #008db8, #3bb3c6);
-  display: block;
+  background-image: linear-gradient(
+    to right bottom,
+    #381054,
+    #273e80,
+    #0066a1,
+    #008db8,
+    #3bb3c6
+  );
 }
 
 .welcomeMsg {
-  display: grid;
-  justify-content: end;
-  align-items: center;
+  display: flex;
+}
+
+.log-btn {
+  margin: auto !important;
 }
 
 .nav-item {
@@ -23,3 +31,42 @@
   justify-content: space-between;
 }
 
+@media screen and (min-width: 1024px) {
+  .nav-item h1 {
+    font-size: 2em;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .nav-item h1 {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 894px) {
+  .log-btn a {
+    width: 70% !important;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .log-btn a {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .log-btn a {
+    font-size: 0.7em;
+  }
+}
+
+.nav-brand a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* .nav-brand img{
+  width: 25% !important;
+  background-color: red;
+} */

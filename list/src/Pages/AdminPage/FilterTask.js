@@ -41,7 +41,7 @@ function FilterTask() {
       <section className="intro">
         <div className="mask d-flex align-items-center h-100">
           <div className="container">
-            <div className="mt-3 w-50 d-flex">
+            <div className="main-btn mt-3 w-50 d-flex">
               <Link to={"/task"} className="btn task-btn">
                 <FontAwesomeIcon icon={faHouse} fade size="lg" />
                 <span>&nbsp;Back To Task Page</span>

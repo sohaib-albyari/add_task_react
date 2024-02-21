@@ -46,7 +46,7 @@ function Task() {
                 <span>&nbsp;Add New Task</span>
               </Link>
 
-              <Link to={"/task/filter"} className="btn task-btn">
+              <Link to={"/task/filter"} className="btn me-2 task-btn">
                 <FontAwesomeIcon icon={faArrowDownShortWide} fade size="lg" />
                 <span>&nbsp;Task Filter</span>
               </Link>
