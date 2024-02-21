@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faLock,
-  faRightToBracket,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import "../cssPage/singin.css";
 import logo from "../image/logo.png";
@@ -14,8 +10,8 @@ import axios from "axios";
 import { useAppContext } from "../context/appContext";
 
 function SingIn() {
-  const { userName, setUserName } = useAppContext();
-  //
+  const { setUserName } = useAppContext();
+
   const [users, setUsers] = useState("");
 
   const [email, setEmail] = useState("");
@@ -38,7 +34,7 @@ function SingIn() {
       if (users[i].email === email && users[i].password === password) {
         con++;
         setUserName(users[i].username);
-        if (users[i].username === "admin") {
+        if (users[i].role === "admin") {
           navigate("/task");
         } else {
           navigate("/user");

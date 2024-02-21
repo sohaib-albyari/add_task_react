@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../image/logo.png";
 import "../App.css";
 import { useAppContext } from "../context/appContext";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 function Nav() {
   const { userName, setUserName } = useAppContext();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     if (userName === "") {

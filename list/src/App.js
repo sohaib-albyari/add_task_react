@@ -16,6 +16,7 @@ import AddDepartment from "./Pages/AdminPage/AddDepartment";
 function App() {
   return (
     <div className="App">
+      
       <Routes>
         {/* <Route path="/" element={<Registration />} /> */}
         <Route exact path="/" element={<SingIn />} />

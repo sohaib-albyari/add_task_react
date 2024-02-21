@@ -154,9 +154,7 @@ function FilterTask() {
                   <div className="card-body">
                     <div className="table-responsive">
                       <table className="table text-white mb-0">
-                        <thead>
                           <Taskhead/>
-                        </thead>
                         <tbody>
                           {tasks &&
                             tasks.map((task) => {

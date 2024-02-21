@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  // Link,
-  useNavigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFormik } from "formik";
 import {
-  // faXmark,
-  // faPlus,
   faCaretDown,
   faCalendarDays,
   faTrash,
@@ -20,23 +15,23 @@ import BottomBtn from "../../components/BottomBtn";
 import { basicSchema } from "../../schemas/Validations";
 
 function AddTask() {
-  const formSubmit = (e) => {
-    e.preventDefault();
-  };
-  const { values, handleBlur, handleChange, handleSubmit, errors } = useFormik({
-    initialValues: {
-      name: "",
-      department: "",
-      employee: "",
-      description: "",
-      check: "",
-      startdateTime: [],
-      enddateTime: [],
-      links: "",
-    },
-    validationSchema: basicSchema,
-    formSubmit,
-  });
+  // const formSubmit = (e) => {
+  //   e.preventDefault();
+  // };
+  // const { values, handleBlur, handleChange, handleSubmit, errors } = useFormik({
+  //   initialValues: {
+  //     name: "",
+  //     department: "",
+  //     employee: "",
+  //     description: "",
+  //     check: "",
+  //     startdateTime: [],
+  //     enddateTime: [],
+  //     links: "",
+  //   },
+  //   validationSchema: basicSchema,
+  //   formSubmit,
+  // });
 
   const [taskData, setTaskData] = useState({
     name: "",
@@ -105,48 +100,48 @@ function AddTask() {
     }
   };
 
-  // const formSubmit = (e) => {
-  //   e.preventDefault();
-  //   taskData.links = links;
-  //   taskData.check = "Not Complete";
+  const formSubmit = (e) => {
+    e.preventDefault();
+    taskData.links = links;
+    taskData.check = "Not Complete";
 
-  //   axios
-  //     .post("http://localhost:8000/task", {
-  //       name: taskData.name,
-  //       department: taskData.department,
-  //       employee: taskData.employee,
-  //       description: taskData.description,
-  //       check: taskData.check,
-  //       startdateTime: taskData.startdateTime,
-  //       enddateTime: taskData.enddateTime,
-  //       links: taskData.links,
-  //     })
-  //     .then((res) => res)
-  //     .catch((err) => console.log(err));
+    axios
+      .post("http://localhost:8000/task", {
+        name: taskData.name,
+        department: taskData.department,
+        employee: taskData.employee,
+        description: taskData.description,
+        check: taskData.check,
+        startdateTime: taskData.startdateTime,
+        enddateTime: taskData.enddateTime,
+        links: taskData.links,
+      })
+      .then((res) => res)
+      .catch((err) => console.log(err));
 
-  //   Swal.fire({
-  //     title: `Has Added "${taskData.name}" successfully.`,
-  //     icon: "success",
-  //   }).then((data) => {
-  //     if (data.isConfirmed) {
-  //       navigate("/task");
-  //     }
-  //   });
-  // };
+    Swal.fire({
+      title: `Has Added "${taskData.name}" successfully.`,
+      icon: "success",
+    }).then((data) => {
+      if (data.isConfirmed) {
+        navigate("/task");
+      }
+    });
+  };
 
   return (
     <>
       <div className="container-fluid p-0">
         <div className="add-page">
           <section>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={formSubmit}>
               <h1>Add Task</h1>
 
               <div className="inputbox">
                 <input
                   type="text"
                   name="name"
-                  value={values.name}
+                  // value={values.name}
                   onChange={handleInput}
                   // onBlur={handleBlur}
                   required
@@ -158,7 +153,7 @@ function AddTask() {
                 <textarea
                   type="text"
                   name="description"
-                  value={values.description}
+                  // value={values.description}
                   onChange={handleInput}
                   // onBlur={handleBlur}
                   required
@@ -170,7 +165,7 @@ function AddTask() {
                 <input
                   type="datetime-local"
                   name="startdateTime"
-                  value={values.startdateTime}
+                  // value={values.startdateTime}
                   onChange={handleInput}
                   // onBlur={handleBlur}
                   required
@@ -188,7 +183,7 @@ function AddTask() {
                 <input
                   type="datetime-local"
                   name="enddateTime"
-                  value={values.enddateTime}
+                  // value={values.enddateTime}
                   onChange={handleInput}
                   // onBlur={handleBlur}
                   required
@@ -281,7 +276,7 @@ function AddTask() {
                       onChange={(e) => {
                         handleInputChange(field.id, e.target.value);
                       }}
-                      value={values.links}
+                      // value={values.links}
                       // onChange={handleChange}
                       // onBlur={handleBlur}
                       required

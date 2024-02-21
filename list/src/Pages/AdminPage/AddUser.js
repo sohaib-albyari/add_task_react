@@ -65,7 +65,8 @@ function AddUser() {
           username: userData.username,
           email: userData.email,
           password: userData.password,
-          depatment: userData.depatment,
+          department: userData.department,
+          role: userData.role,
         })
         .then((res) => res.data)
         .catch((err) => console.log(err));
@@ -112,16 +113,26 @@ function AddUser() {
               <div className="inputbox">
                 <input
                   type="text"
+                  name="role"
+                  onChange={handleInput}
+                  required
+                />
+                <label htmlFor="">Role</label>
+              </div>
+
+              <div className="inputbox">
+                <input
+                  type="text"
                   name="password"
                   onChange={handleInput}
                   required
                 />
-                <label htmlFor="">password</label>
+                <label htmlFor="">Password</label>
               </div>
 
               <div className="inputbox">
                 <select
-                  name="depatment"
+                  name="department"
                   className="form-select"
                   id="validationCustom04"
                   onChange={handleInput}
