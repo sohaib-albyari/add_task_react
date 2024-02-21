@@ -33,22 +33,22 @@ function Task() {
             <div className="main-btn mt-3">
               <Link to={"/task/add_department"} className="btn me-2 task-btn">
                 <FontAwesomeIcon icon={faBuildingUser} fade size="lg" />
-                Add New Department
+                <span>&nbsp;Add New Department</span>
               </Link>
 
               <Link to={"/task/adduser"} className="btn me-2 task-btn">
                 <FontAwesomeIcon icon={faUserPlus} fade size="lg" />
-                Add New User
+                <span>&nbsp;Add New User</span>
               </Link>
 
               <Link to={"/task/add"} className="btn me-2 task-btn">
                 <FontAwesomeIcon icon={faNotesMedical} fade size="lg" />
-                &nbsp;Add New Task
+                <span>&nbsp;Add New Task</span>
               </Link>
 
               <Link to={"/task/filter"} className="btn task-btn">
                 <FontAwesomeIcon icon={faArrowDownShortWide} fade size="lg" />
-                Task Filter
+                <span>&nbsp;Task Filter</span>
               </Link>
             </div>
 

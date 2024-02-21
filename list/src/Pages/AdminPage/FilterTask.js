@@ -43,8 +43,8 @@ function FilterTask() {
           <div className="container">
             <div className="mt-3 w-50 d-flex">
               <Link to={"/task"} className="btn task-btn">
-                <FontAwesomeIcon icon={faHouse} fade size="lg" /> Back To Task
-                Page
+                <FontAwesomeIcon icon={faHouse} fade size="lg" />
+                <span>&nbsp;Back To Task Page</span>
               </Link>
             </div>
 
@@ -154,7 +154,7 @@ function FilterTask() {
                   <div className="card-body">
                     <div className="table-responsive">
                       <table className="table text-white mb-0">
-                          <Taskhead/>
+                        <Taskhead />
                         <tbody>
                           {tasks &&
                             tasks.map((task) => {

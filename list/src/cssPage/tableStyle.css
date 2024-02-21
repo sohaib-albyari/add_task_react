@@ -1,9 +1,13 @@
-.main-btn {
-    display: flex;
-    justify-content: center;
+:root {
+  --clr: #ff69b45d;
 }
 
-.task-btn {
+.main-btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* .task-btn {
     width: 18% !important;
     height: 40px;
     border-radius: 40px !important;
@@ -17,165 +21,191 @@
     margin-bottom: 10px !important;
     padding: 0;
     color: #000000 !important;
+} */
+
+.task-btn {
+  position: relative;
+  background: #fff !important;
+  color: #fff !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1em !important;
+  letter-spacing: 0.1em;
+  font-weight: 400px;
+  padding: 10px 30px;
+  transition: 0.5s;
+}
+.task-btn:hover {
+  letter-spacing: 0.25em;
+  background: var(--clr);
+  box-shadow: 0 0 35px var(--clr);
+  color: var(--clr);
+  transition: 0.5s;
+}
+.task-btn:before {
+  content: " ";
+  position: absolute;
+  inset: 2px;
+  background: #380d59;
+}
+.task-btn span {
+  position: relative;
+  z-index: 1;
 }
 
 table td,
 table th {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: transparent !important;
-    color: #fff !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: transparent !important;
+  color: #fff !important;
 }
-
 
 .mask-custom {
-    margin: 1% 0;
-    background-color: transparent !important;
-    border-radius: 2em !important;
-    backdrop-filter: blur(40px) !important;
-    border: 2px solid rgba(255, 255, 255, 0.05) !important;
-    background-clip: padding-box !important;
-    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03) !important;
+  margin: 1% 0;
+  background-color: transparent !important;
+  border-radius: 2em !important;
+  backdrop-filter: blur(40px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.05) !important;
+  background-clip: padding-box !important;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03) !important;
 }
-
-
 
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 .card {
-    background-color: transparent;
-    border-radius: 2px;
-    box-shadow: -1px 2px 4px rgba(0, 0, 0, .25), 1px 1px 3px rgba(0, 0, 0, .1);
-    margin: 0 auto;
-    /* max-width: 340px; */
+  background-color: transparent;
+  border-radius: 2px;
+  box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25), 1px 1px 3px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  /* max-width: 340px; */
 }
 
 .card-media {
-    width: 100%;
+  width: 100%;
 }
 
 .card-details {
-    padding: 5px 15px 2px;
+  padding: 5px 15px 2px;
 }
 
 .card-head,
 .card-subhead {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .card-head {
-    display: inline-block;
-    font-size: 26px;
-    margin-bottom: 15px;
+  display: inline-block;
+  font-size: 26px;
+  margin-bottom: 15px;
 }
 
 .card-head-small {
-    color: #888;
-    display: inline-block;
-    float: right;
-    margin-top: 24px;
+  color: #888;
+  display: inline-block;
+  float: right;
+  margin-top: 24px;
 }
 
 .card-head-small-icon {
-    vertical-align: sub;
+  vertical-align: sub;
 }
 
-
 .card-stars-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .card-stars-list li {
-    display: inline-block;
-    float: left;
+  display: inline-block;
+  float: left;
 }
 
 .card-stars-text {
-    color: #aaa;
-    display: inline-block;
-    font-size: 14px;
-    margin-left: 10px;
+  color: #aaa;
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
 .card-body-support-text {
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
-    margin: 8px 0 10px;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 8px 0 10px;
 }
 
 .card-body-text {
-    border-bottom: 1px solid #eee;
-    color: #777;
-    padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  color: #777;
+  padding-bottom: 15px;
 }
 
 .card-options-head {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .card-options-icon {
-    display: block;
-    float: left;
-    margin: 8px 5px 0 0;
+  display: block;
+  float: left;
+  margin: 8px 5px 0 0;
 }
 
 .card-options-list {
-    float: left;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .card-options-button {
-    border-radius: 2px;
-    color: #888;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 500;
-    padding: 10px 12px;
+  border-radius: 2px;
+  color: #888;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  padding: 10px 12px;
 }
 
 .card-options-button:hover {
-    background-color: #ebebeb;
+  background-color: #ebebeb;
 }
 
-@media screen and (min-width:480px) {
-    .card-options-button {
-        padding: 10px 20px;
-    }
+@media screen and (min-width: 480px) {
+  .card-options-button {
+    padding: 10px 20px;
+  }
 }
 
 .card-options-button.is-active {
-    background-color: #d2d2d2;
-    color: #222;
-    font-weight: 600;
+  background-color: #d2d2d2;
+  color: #222;
+  font-weight: 600;
 }
 
 .card-action-button {
-    border-radius: 2px;
-    color: #2196F3;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 500;
-    margin: 15px 0 5px;
-    padding: 10px;
+  border-radius: 2px;
+  color: #2196f3;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  margin: 15px 0 5px;
+  padding: 10px;
 }
 
 .card-action-button:hover {
-    background-color: rgba(33, 150, 243, .2);
+  background-color: rgba(33, 150, 243, 0.2);
 }
 
 .label_user {
-    top: -5px !important;
+  top: -5px !important;
 }
