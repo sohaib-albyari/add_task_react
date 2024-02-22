@@ -12,11 +12,11 @@ import TaskUser from "./Pages/UserPage/TaskUser";
 import TaskUserDetails from "./Pages/UserPage/UserTaskDetails";
 import AddUser from "./Pages/AdminPage/AddUser";
 import AddDepartment from "./Pages/AdminPage/AddDepartment";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
     <div className="App">
-      
       <Routes>
         {/* <Route path="/" element={<Registration />} /> */}
         <Route exact path="/" element={<SingIn />} />
@@ -35,6 +35,7 @@ function App() {
           <Route path="/user" element={<TaskUser />} />
           <Route path="details/:taskid" element={<TaskUserDetails />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

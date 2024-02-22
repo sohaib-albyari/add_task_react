@@ -34,7 +34,10 @@ function Nav() {
                 <img className="float-start w-25" src={logo} alt="0" />
               </Link>
             </div>
-            <div className="welcomeMsg col-6">
+            <div
+              className="welcomeMsg col-6"
+              style={{ visibility: userName === "" ? "hidden" : "visible" }}
+            >
               <h1 className="float-end text-white-50 text-center m-auto">
                 Welcome {userName}
               </h1>
